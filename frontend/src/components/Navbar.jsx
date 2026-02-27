@@ -23,58 +23,64 @@ export default function Navbar() {
           </Link>
 
           {/* Tools Dropdown */}
-          <div className="relative group">
-            <button 
-              onClick={() => setIsToolsOpen(!isToolsOpen)}
-              className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 flex items-center gap-1 group-hover:text-red-600"
+          <div 
+            className="relative group"
+            onMouseEnter={() => setIsToolsOpen(true)}
+            onMouseLeave={() => setIsToolsOpen(false)}
+          >
+            <Link 
+              to="/tools"
+              className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 flex items-center gap-1"
             >
               Tools
               <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
 
             {/* Dropdown Menu */}
-            <div className="absolute hidden group-hover:block bg-white shadow-2xl rounded-xl p-6 w-56 top-full left-1/2 transform -translate-x-1/2 mt-2 animate-fade-in-up border border-gray-100">
-              <div className="space-y-3">
-                <Link 
-                  to="/merge" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  Merge PDF
-                </Link>
-                <Link 
-                  to="/compress" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  Compress PDF
-                </Link>
-                <Link 
-                  to="/pdf-to-jpg" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  PDF to JPG
-                </Link>
-                <Link 
-                  to="/jpg-to-pdf" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  JPG to PDF
-                </Link>
-                <Link 
-                  to="/protect" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  Protect PDF
-                </Link>
-                <Link 
-                  to="/unlock" 
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                >
-                  Unlock PDF
-                </Link>
+            {isToolsOpen && (
+              <div className="absolute bg-white shadow-2xl rounded-xl p-6 w-56 top-full left-1/2 transform -translate-x-1/2 mt-2 animate-fade-in-up border border-gray-100 z-50">
+                <div className="space-y-3">
+                  <Link 
+                    to="/merge" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    Merge PDF
+                  </Link>
+                  <Link 
+                    to="/compress" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    Compress PDF
+                  </Link>
+                  <Link 
+                    to="/pdf-to-jpg" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    PDF to JPG
+                  </Link>
+                  <Link 
+                    to="/jpg-to-pdf" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    JPG to PDF
+                  </Link>
+                  <Link 
+                    to="/protect" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    Protect PDF
+                  </Link>
+                  <Link 
+                    to="/unlock" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    Unlock PDF
+                  </Link>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <Link 
@@ -85,7 +91,7 @@ export default function Navbar() {
           </Link>
 
           <Link 
-            to="/merge" 
+            to="/tools" 
             className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-xl transition duration-300 hover:scale-105 hover:-translate-y-1"
           >
             Get Started
