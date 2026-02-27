@@ -29,10 +29,10 @@ export default function FileUpload({ onFilesSelected, accept = '.pdf', multiple 
 
   return (
     <div
-      className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition ${
+      className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition duration-300 ${
         isDragActive
-          ? 'border-blue-500 bg-blue-50'
-          : 'border-gray-300 hover:border-blue-400'
+          ? 'border-red-500 bg-red-50 scale-105'
+          : 'border-gray-300 hover:border-red-400 hover:bg-red-50'
       }`}
       onDragEnter={handleDrag}
       onDragLeave={handleDrag}
@@ -47,14 +47,17 @@ export default function FileUpload({ onFilesSelected, accept = '.pdf', multiple 
         className="hidden"
         id="file-input"
       />
-      <label htmlFor="file-input" className="cursor-pointer">
-        <div className="text-4xl mb-2">📁</div>
-        <p className="text-lg font-semibold text-gray-700">
+      <label htmlFor="file-input" className="cursor-pointer block">
+        <div className="text-6xl mb-4">📁</div>
+        <p className="text-2xl font-bold text-gray-900 mb-2">
           Drop files here or click to select
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-lg text-gray-600 mb-4">
           {multiple ? 'Select multiple files' : 'Select a file'}
         </p>
+        <button className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition">
+          Browse Files
+        </button>
       </label>
     </div>
   );

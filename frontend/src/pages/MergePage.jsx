@@ -57,39 +57,106 @@ export default function MergePage() {
         <meta name="description" content="Combine multiple PDF files into one quickly and easily. No signup required." />
         <link rel="canonical" href="https://pdfmaster.com/merge" />
       </Helmet>
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Merge PDF Files</h1>
-        <p className="text-gray-600 mb-8">Select 2 or more PDFs to combine them into a single file.</p>
 
-        <FileUpload onFilesSelected={handleFilesSelected} accept=".pdf" multiple />
-
-        {files.length > 0 && (
-          <div className="mt-8">
-            <h3 className="text-lg font-semibold mb-4">Selected Files ({files.length})</h3>
-            <ul className="space-y-2 mb-6">
-              {files.map((file, index) => (
-                <li key={index} className="flex justify-between items-center bg-gray-100 p-3 rounded">
-                  <span className="text-gray-800">{file.name}</span>
-                  <button
-                    onClick={() => removeFile(index)}
-                    className="text-red-600 hover:text-red-800"
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={handleMerge}
-              disabled={loading}
-              className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400"
-            >
-              {loading ? 'Merging...' : 'Merge PDFs'}
-            </button>
+      {/* Header */}
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12 border-b border-blue-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl">
+              <span className="text-2xl">📎</span>
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900">Merge PDFs</h1>
           </div>
-        )}
+          <p className="text-lg text-gray-600">Combine multiple PDF files into a single, organized document.</p>
+        </div>
+      </div>
 
-        {error && <div className="mt-4 p-4 bg-red-100 text-red-700 rounded">{error}</div>}
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Select PDF Files</h2>
+            <FileUpload onFilesSelected={handleFilesSelected} accept=".pdf" multiple />
+          </div>
+
+          {files.length > 0 && (
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-semibold text-gray-900">Selected Files</h3>
+                <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">{files.length} file{files.length !== 1 ? 's' : ''}</span>
+              </div>
+              
+              <div className="space-y-3 mb-8">
+                {files.map((file, index) => (
+                  <div key={index} className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition">
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="text-2xl">📄</div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-gray-800 truncate">{file.name}</p>
+                        <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => removeFile(index)}
+                      className="ml-4 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition font-medium"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={handleMerge}
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-lg"
+              >
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="inline-block animate-spin">⚙️</span>
+                    Merging PDFs...
+                  </span>
+                ) : (
+                  'Merge PDFs'
+                )}
+              </button>
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
+              <span className="text-xl">⚠️</span>
+              <div>
+                <p className="font-semibold">Error</p>
+                <p className="text-sm">{error}</p>
+              </div>
+            </div>
+          )}
+
+          {files.length === 0 && (
+            <div className="text-center py-8">
+              <p className="text-gray-500 text-lg">Start by uploading 2 or more PDF files above</p>
+            </div>
+          )}
+        </div>
+
+        {/* Info Box */}
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+            <div className="text-3xl mb-3">🚀</div>
+            <h4 className="font-semibold text-gray-900 mb-2">Fast Merging</h4>
+            <p className="text-sm text-gray-600">Combine your PDFs in seconds</p>
+          </div>
+          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+            <div className="text-3xl mb-3">🔒</div>
+            <h4 className="font-semibold text-gray-900 mb-2">Secure</h4>
+            <p className="text-sm text-gray-600">Files deleted after processing</p>
+          </div>
+          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+            <div className="text-3xl mb-3">♾️</div>
+            <h4 className="font-semibold text-gray-900 mb-2">No Limits</h4>
+            <p className="text-sm text-gray-600">Merge as many files as you need</p>
+          </div>
+        </div>
       </div>
     </>
   );
