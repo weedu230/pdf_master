@@ -22,7 +22,14 @@ export default function Navbar() {
             Home
           </Link>
 
-          {/* Tools Dropdown */}
+          <Link 
+            to="/about" 
+            className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 inline-block"
+          >
+            About
+          </Link>
+
+          {/* Tools Dropdown */
           <div 
             className="relative group"
             onMouseEnter={() => setIsToolsOpen(true)}

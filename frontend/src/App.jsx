@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ToolsPage from './pages/ToolsPage';
+import AboutPage from './pages/AboutPage';
 import MergePage from './pages/MergePage';
 import CompressPage from './pages/CompressPage';
 import PdfToJpgPage from './pages/PdfToJpgPage';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/merge" element={<MergePage />} />
           <Route path="/compress" element={<CompressPage />} />
           <Route path="/pdf-to-jpg" element={<PdfToJpgPage />} />
