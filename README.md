@@ -71,37 +71,7 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 
 ---
 
-## Project Structure
 
-\\\
-pdf-master/
-+-- frontend/                  # React + Vite application
-¦   +-- src/
-¦   ¦   +-- components/       # Navbar, Footer, FileUpload
-¦   ¦   +-- pages/            # Home, Tools, tool pages
-¦   ¦   +-- App.jsx           # Main router
-¦   ¦   +-- index.css         # Global styles
-¦   +-- public/               # Robots.txt, sitemap.xml
-¦   +-- vite.config.js        # Vite configuration
-¦   +-- tailwind.config.js
-¦   +-- package.json
-¦
-+-- backend/                   # FastAPI application
-¦   +-- app/
-¦   ¦   +-- main.py           # FastAPI setup
-¦   ¦   +-- routers/
-¦   ¦   ¦   +-- pdf_tools.py  # PDF endpoints
-¦   ¦   +-- utils/
-¦   ¦       +-- file_helpers.py
-¦   ¦       +-- pdf_operations.py
-¦   +-- requirements.txt
-¦   +-- README.md
-¦
-+-- netlify.toml
-+-- README.md
-\\\
-
----
 
 ## Getting Started (Local Development)
 
