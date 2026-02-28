@@ -22,16 +22,13 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 ## Screenshots
 
 ### Home Page
-![Home Page](https://via.placeholder.com/1200x600?text=PDF+Master+Home+Page)
+<img width="1365" height="679" alt="image" src="https://github.com/user-attachments/assets/dd6e1799-51af-4df6-92c7-47d0cbff9b22" />
+
 
 ### Tool Selection
-![Tools Page](https://via.placeholder.com/1200x600?text=PDF+Tools+Selection)
+<img width="1366" height="684" alt="image" src="https://github.com/user-attachments/assets/adb30081-94f2-454f-a284-586e1d6db090" />
 
-### File Upload & Processing
-![File Upload](https://via.placeholder.com/1200x600?text=File+Upload+%26+Processing)
 
-### Mobile Responsive
-![Mobile View](https://via.placeholder.com/600x800?text=Mobile+Responsive+Design)
 
 ---
 
