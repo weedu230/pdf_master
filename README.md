@@ -46,12 +46,8 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 
 ## Languages & Frameworks
 
-\\\
-JavaScript       ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 65%
-Python          ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 32%
-Shell           ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 2%
-CSS             ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 1%
-\\\
+<img width="336" height="147" alt="image" src="https://github.com/user-attachments/assets/19e0718e-4983-48d2-b539-30c646758fc3" />
+
 
 ---
 
@@ -83,27 +79,27 @@ CSS             ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 1%
 \\\
 pdf-master/
 +-- frontend/                  # React + Vite application
-¦   +-- src/
-¦   ¦   +-- components/       # Navbar, Footer, FileUpload
-¦   ¦   +-- pages/            # Home, Tools, tool pages
-¦   ¦   +-- App.jsx           # Main router
-¦   ¦   +-- index.css         # Global styles
-¦   +-- public/               # Robots.txt, sitemap.xml
-¦   +-- vite.config.js        # Vite configuration
-¦   +-- tailwind.config.js
-¦   +-- package.json
-¦
+Â¦   +-- src/
+Â¦   Â¦   +-- components/       # Navbar, Footer, FileUpload
+Â¦   Â¦   +-- pages/            # Home, Tools, tool pages
+Â¦   Â¦   +-- App.jsx           # Main router
+Â¦   Â¦   +-- index.css         # Global styles
+Â¦   +-- public/               # Robots.txt, sitemap.xml
+Â¦   +-- vite.config.js        # Vite configuration
+Â¦   +-- tailwind.config.js
+Â¦   +-- package.json
+Â¦
 +-- backend/                   # FastAPI application
-¦   +-- app/
-¦   ¦   +-- main.py           # FastAPI setup
-¦   ¦   +-- routers/
-¦   ¦   ¦   +-- pdf_tools.py  # PDF endpoints
-¦   ¦   +-- utils/
-¦   ¦       +-- file_helpers.py
-¦   ¦       +-- pdf_operations.py
-¦   +-- requirements.txt
-¦   +-- README.md
-¦
+Â¦   +-- app/
+Â¦   Â¦   +-- main.py           # FastAPI setup
+Â¦   Â¦   +-- routers/
+Â¦   Â¦   Â¦   +-- pdf_tools.py  # PDF endpoints
+Â¦   Â¦   +-- utils/
+Â¦   Â¦       +-- file_helpers.py
+Â¦   Â¦       +-- pdf_operations.py
+Â¦   +-- requirements.txt
+Â¦   +-- README.md
+Â¦
 +-- netlify.toml
 +-- README.md
 \\\
