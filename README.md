@@ -1,4 +1,4 @@
-# ?? PDF Master - Free Online PDF Tools
+# PDF Master - Free Online PDF Tools
 
 Fast, free, privacy-focused PDF tools built with modern web technology. No signup required. Your PDFs are instantly deleted from our servers.
 
@@ -6,7 +6,7 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 
 ---
 
-## ? Features
+## Features
 
 - **Merge PDFs** - Combine multiple PDF files into one
 - **Compress PDF** - Reduce file size while maintaining quality
@@ -19,7 +19,23 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 
 ---
 
-## ?? PageSpeed Insights
+## Screenshots
+
+### Home Page
+![Home Page](https://via.placeholder.com/1200x600?text=PDF+Master+Home+Page)
+
+### Tool Selection
+![Tools Page](https://via.placeholder.com/1200x600?text=PDF+Tools+Selection)
+
+### File Upload & Processing
+![File Upload](https://via.placeholder.com/1200x600?text=File+Upload+%26+Processing)
+
+### Mobile Responsive
+![Mobile View](https://via.placeholder.com/600x800?text=Mobile+Responsive+Design)
+
+---
+
+## PageSpeed Insights
 
 - **Performance**: 100
 - **Accessibility**: 92+
@@ -28,44 +44,58 @@ Fast, free, privacy-focused PDF tools built with modern web technology. No signu
 
 ---
 
-## ?? Tech Stack
+## Languages & Frameworks
 
-### Frontend
-- **React 18** + **Vite** (? Fast builds & HMR)
-- **Tailwind CSS** (Utility-first styling)
-- **React Router v6** (Client-side routing)
-- **Axios** (HTTP client)
-- **React Helmet** (SEO & meta tags)
-- **Code Splitting** & Lazy Loading (Performance optimization)
-
-### Backend
-- **FastAPI** (Python - modern async framework)
-- **PyPDF2** (PDF manipulation)
-- **pikepdf** (Compression & encryption)
-- **pdf2image** (PDF to image conversion)
-- **Pillow** (Image processing)
-- **CORS** enabled for cross-origin requests
+\\\
+JavaScript       ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 65%
+Python          ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 32%
+Shell           ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 2%
+CSS             ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦ 1%
+\\\
 
 ---
 
-## ?? Project Structure
+## Tech Stack
+
+### Frontend
+- React 18 + Vite (Fast builds & HMR)
+- Tailwind CSS (Utility-first styling)
+- React Router v6 (Client-side routing)
+- Axios (HTTP client)
+- React Helmet (SEO & meta tags)
+- Code Splitting & Lazy Loading (Performance)
+
+### Backend
+- FastAPI (Python - async framework)
+- PyPDF2 (PDF manipulation)
+- pikepdf (Compression & encryption)
+- pdf2image (PDF conversions)
+- Pillow (Image processing)
+
+### Deployment
+- Netlify (Frontend)
+- Railway/Heroku (Backend)
+
+---
+
+## Project Structure
 
 \\\
 pdf-master/
 +-- frontend/                  # React + Vite application
 ¦   +-- src/
 ¦   ¦   +-- components/       # Navbar, Footer, FileUpload
-¦   ¦   +-- pages/            # Home, Tools, individual tool pages
+¦   ¦   +-- pages/            # Home, Tools, tool pages
 ¦   ¦   +-- App.jsx           # Main router
-¦   ¦   +-- index.css         # Global + animation styles
+¦   ¦   +-- index.css         # Global styles
 ¦   +-- public/               # Robots.txt, sitemap.xml
-¦   +-- vite.config.js        # Build configuration
+¦   +-- vite.config.js        # Vite configuration
 ¦   +-- tailwind.config.js
 ¦   +-- package.json
 ¦
 +-- backend/                   # FastAPI application
 ¦   +-- app/
-¦   ¦   +-- main.py           # FastAPI setup & routes
+¦   ¦   +-- main.py           # FastAPI setup
 ¦   ¦   +-- routers/
 ¦   ¦   ¦   +-- pdf_tools.py  # PDF endpoints
 ¦   ¦   +-- utils/
@@ -74,18 +104,18 @@ pdf-master/
 ¦   +-- requirements.txt
 ¦   +-- README.md
 ¦
-+-- netlify.toml              # Netlify configuration
-+-- README.md                 # This file
++-- netlify.toml
++-- README.md
 \\\
 
 ---
 
-## ?? Getting Started (Local Development)
+## Getting Started (Local Development)
 
 ### Prerequisites
-- **Node.js** v16+ ([download](https://nodejs.org))
-- **Python** 3.8+ ([download](https://python.org))
-- **Git** ([download](https://git-scm.com))
+- Node.js v16+ (https://nodejs.org)
+- Python 3.8+ (https://python.org)
+- Git (https://git-scm.com)
 
 ### Backend Setup
 
@@ -97,7 +127,7 @@ pip install -r requirements.txt
 python -m uvicorn app.main:app --reload --port 8000
 \\\
 
-Backend API: http://localhost:8000 | Docs: /docs
+Backend: http://localhost:8000 | Docs: http://localhost:8000/docs
 
 ### Frontend Setup
 
@@ -111,7 +141,7 @@ Frontend: http://localhost:5173
 
 ---
 
-## ?? Build & Deploy
+## Build & Deploy
 
 ### Build Production
 
@@ -122,9 +152,9 @@ npm run build
 
 Output: \rontend/dist/\
 
-### Netlify Deployment
+### Netlify Deployment (Automatic)
 
-Automatic on every push to \main\:
+Push to main branch triggers:
 - Build: \
 pm install && npm run build\
 - Publish: \rontend/dist\
@@ -132,7 +162,7 @@ pm install && npm run build\
 
 ---
 
-## ?? Privacy & Security
+## Privacy & Security
 
 - Files automatically deleted after processing
 - No user accounts or tracking
@@ -142,20 +172,20 @@ pm install && npm run build\
 
 ---
 
-## ?? API Endpoints
+## API Endpoints
 
-- \POST /api/merge\ - Merge PDFs
-- \POST /api/compress\ - Compress PDF
-- \POST /api/pdf-to-jpg\ - Convert PDF to JPG
-- \POST /api/jpg-to-pdf\ - Convert JPG to PDF
-- \POST /api/word-to-pdf\ - Convert DOCX to PDF
-- \POST /api/pdf-to-word\ - Convert PDF to DOCX
-- \POST /api/protect\ - Add password protection
-- \POST /api/unlock\ - Remove password protection
+- POST /api/merge - Merge PDFs
+- POST /api/compress - Compress PDF
+- POST /api/pdf-to-jpg - Convert PDF to JPG
+- POST /api/jpg-to-pdf - Convert JPG to PDF
+- POST /api/word-to-pdf - Convert DOCX to PDF
+- POST /api/pdf-to-word - Convert PDF to DOCX
+- POST /api/protect - Add password protection
+- POST /api/unlock - Remove password protection
 
 ---
 
-## ?? Troubleshooting
+## Troubleshooting
 
 **Backend won't start?**
 - Ensure Python 3.8+ installed
@@ -172,12 +202,14 @@ ode --version\
 
 ---
 
-## ?? License
+## License
 
 MIT - Free to use
 
 ---
 
-## ?? Author
+## Author
 
-[weedu230](https://github.com/weedu230) | [GitHub](https://github.com/weedu230) | [LinkedIn](https://linkedin.com/in/weedu)
+[weedu230](https://github.com/weedu230)
+
+GitHub: https://github.com/weedu230 | LinkedIn: https://linkedin.com/in/weedu
