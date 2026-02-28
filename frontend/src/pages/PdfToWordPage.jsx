@@ -58,8 +58,20 @@ export default function PdfToWordPage() {
   return (
     <>
       <Helmet>
-        <title>PDF to Word - PDF Master</title>
-        <meta name="description" content="Convert PDF files to editable Word documents instantly" />
+        <title>PDF to Word Converter Free Online - Convert PDF to DOCX | PDF Master</title>
+        <meta name="description" content="Free PDF to Word converter online. Convert PDF to editable Word (DOCX) documents instantly. No signup, no watermarks. Fast and secure PDF to Word conversion." />
+        <meta name="keywords" content="pdf to word, pdf to word converter, convert pdf to word, pdf to docx, pdf to doc, free pdf to word converter, pdf to editable word" />
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/pdf-to-word" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "PDF to Word Converter",
+            "description": "Convert PDF files to editable Word documents",
+            "applicationCategory": "UtilitiesApplication",
+            "offers": { "@type": "Offer", "price": "0" }
+          })}
+        </script>
       </Helmet>
 
       <div className="max-w-2xl mx-auto px-4 py-12">

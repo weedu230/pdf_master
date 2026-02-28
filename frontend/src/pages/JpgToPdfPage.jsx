@@ -53,9 +53,10 @@ export default function JpgToPdfPage() {
   return (
     <>
       <Helmet>
-        <title>Convert JPG to PDF – PDF Master</title>
-        <meta name="description" content="Convert JPG images to PDF. Combine multiple images into one PDF file." />
-        <link rel="canonical" href="https://pdfmaster.com/jpg-to-pdf" />
+        <title>JPG to PDF Converter Free Online - Convert Images to PDF | PDF Master</title>
+        <meta name="description" content="Free JPG to PDF converter. Convert images to PDF instantly. Combine multiple JPG, JPEG, PNG images into one PDF file. No signup required." />
+        <meta name="keywords" content="jpg to pdf, jpeg to pdf, image to pdf, convert jpg to pdf, jpg to pdf converter, image to pdf converter, png to pdf" />
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/jpg-to-pdf" />
       </Helmet>
       <div className="max-w-2xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">JPG to PDF</h1>

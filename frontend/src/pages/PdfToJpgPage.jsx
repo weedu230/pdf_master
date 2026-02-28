@@ -53,9 +53,10 @@ export default function PdfToJpgPage() {
   return (
     <>
       <Helmet>
-        <title>Convert PDF to JPG Images – PDF Master</title>
-        <meta name="description" content="Convert PDF pages to JPG images. Adjust DPI for quality. Fast and easy." />
-        <link rel="canonical" href="https://pdfmaster.com/pdf-to-jpg" />
+        <title>PDF to JPG Converter Free Online - Convert PDF to Images | PDF Master</title>
+        <meta name="description" content="Free PDF to JPG converter. Convert PDF pages to high-quality JPG images instantly. Fast, secure, no signup required. Choose DPI quality." />
+        <meta name="keywords" content="pdf to jpg, pdf to jpeg, pdf to image, convert pdf to jpg, pdf to jpg converter, pdf to image converter" />
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/pdf-to-jpg" />
       </Helmet>
       <div className="max-w-2xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">PDF to JPG</h1>

@@ -47,9 +47,50 @@ const Home = memo(() => {
   return (
     <>
       <Helmet>
-        <title>PDF Master – Edit PDFs Easily Online</title>
-        <meta name="description" content="Professional PDF editing tools. Merge, compress, convert, protect PDFs. Fast, free, no signup required." />
-        <link rel="canonical" href="https://pdfmaster.com/" />
+        <title>Free PDF Tools Online - Convert, Merge, Compress PDFs | PDF Master</title>
+        <meta name="description" content="Free online PDF tools: Convert PDF to Word, Word to PDF, JPG to PDF, merge, compress, protect PDFs. Fast, secure, no signup required. Professional PDF editing made simple." />
+        <meta name="keywords" content="pdf to word, word to pdf, pdf to jpg, jpg to pdf, merge pdf, compress pdf, pdf converter, free pdf tools, pdf editor online, convert pdf, pdf to word converter, word to pdf converter" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Free PDF Tools Online - Convert, Merge, Compress PDFs" />
+        <meta property="og:description" content="Professional PDF tools: PDF to Word, Word to PDF, merge, compress, convert PDFs. Fast, free, secure." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pdf-master-weedu.netlify.app/" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Free PDF Tools Online - PDF Master" />
+        <meta name="twitter:description" content="Convert PDF to Word, merge, compress PDFs online for free" />
+        
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/" />
+        
+        {/* Structured Data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "PDF Master",
+            "url": "https://pdf-master-weedu.netlify.app/",
+            "description": "Free online PDF tools for converting, merging, compressing, and editing PDFs",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "All",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "featureList": [
+              "PDF to Word Converter",
+              "Word to PDF Converter", 
+              "PDF to JPG Converter",
+              "JPG to PDF Converter",
+              "Merge PDF Files",
+              "Compress PDF",
+              "Protect PDF with Password",
+              "Unlock PDF"
+            ]
+          })}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
@@ -157,28 +198,6 @@ const Home = memo(() => {
           >
             Get Started Free
           </Link>
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Why Choose PDF Master?</h2>
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Built for professionals who need reliable, fast, and secure PDF tools
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:shadow-lg transition">
-              <h3 className="text-5xl font-bold text-red-600 mb-2">3</h3>
-              <p className="text-gray-600 text-lg">Real Registered Users <br/>(We don't fake this number. It's the actual count.)</p>
-            </div>
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:shadow-lg transition">
-              <h3 className="text-5xl font-bold text-gray-900 mb-2">$0</h3>
-              <p className="text-gray-600 text-lg">Cost to You <br/>(And we plan to keep the core tools free forever.)</p>
-            </div>
-          </div>
         </div>
       </div>
     </>

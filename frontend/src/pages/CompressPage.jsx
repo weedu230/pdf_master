@@ -53,9 +53,10 @@ export default function CompressPage() {
   return (
     <>
       <Helmet>
-        <title>Compress PDF Online – Reduce File Size | PDF Master</title>
-        <meta name="description" content="Reduce PDF file size while maintaining quality. Fast, free compression tool." />
-        <link rel="canonical" href="https://pdfmaster.com/compress" />
+        <title>Compress PDF Online Free - Reduce PDF File Size | PDF Master</title>
+        <meta name="description" content="Free PDF compressor online. Reduce PDF file size while maintaining quality. Fast compression, no signup required. Compress PDF easily." />
+        <meta name="keywords" content="compress pdf, reduce pdf size, pdf compressor, compress pdf online, reduce pdf file size, pdf compression, shrink pdf" />
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/compress" />
       </Helmet>
       <div className="max-w-2xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Compress PDF</h1>

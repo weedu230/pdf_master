@@ -53,9 +53,10 @@ export default function MergePage() {
   return (
     <>
       <Helmet>
-        <title>Merge PDF Files Online – PDF Master</title>
-        <meta name="description" content="Combine multiple PDF files into one quickly and easily. No signup required." />
-        <link rel="canonical" href="https://pdfmaster.com/merge" />
+        <title>Merge PDF Files Online Free - Combine PDFs | PDF Master</title>
+        <meta name="description" content="Free PDF merger online. Combine multiple PDF files into one document instantly. No signup, secure, fast. Merge PDF files easily." />
+        <meta name="keywords" content="merge pdf, combine pdf, pdf merger, merge pdf files, combine pdf files, pdf merge online, free pdf merger" />
+        <link rel="canonical" href="https://pdf-master-weedu.netlify.app/merge" />
       </Helmet>
 
       {/* Header */}

@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow:
 Allow: /
-Sitemap: https://pdfmaster.com/sitemap.xml
+Sitemap: https://pdf-master-weedu.netlify.app/sitemap.xml
