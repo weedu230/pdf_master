@@ -9,7 +9,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <div className="bg-gradient-to-br from-red-500 to-red-600 p-2 rounded-lg">
-            <span className="text-white font-bold text-xl">📄</span>
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
           </div>
           <span className="text-2xl font-bold text-gray-900">PDF Master</span>
         </Link>

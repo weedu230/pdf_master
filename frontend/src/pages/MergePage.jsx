@@ -89,7 +89,9 @@ export default function MergePage() {
                 {files.map((file, index) => (
                   <div key={index} className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition">
                     <div className="flex items-center gap-3 flex-1">
-                      <div className="text-2xl">📄</div>
+                      <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-gray-800 truncate">{file.name}</p>
                         <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
@@ -112,7 +114,10 @@ export default function MergePage() {
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <span className="inline-block animate-spin">⚙️</span>
+                    <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                     Merging PDFs...
                   </span>
                 ) : (
@@ -124,7 +129,9 @@ export default function MergePage() {
 
           {error && (
             <div className="mt-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
-              <span className="text-xl">⚠️</span>
+              <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4v2m0 4v-1m0 0H7m5 0h5M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+              </svg>
               <div>
                 <p className="font-semibold">Error</p>
                 <p className="text-sm">{error}</p>
@@ -142,17 +149,23 @@ export default function MergePage() {
         {/* Info Box */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <div className="text-3xl mb-3">🚀</div>
+            <svg className="w-10 h-10 text-blue-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
             <h4 className="font-semibold text-gray-900 mb-2">Fast Merging</h4>
             <p className="text-sm text-gray-600">Combine your PDFs in seconds</p>
           </div>
           <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <div className="text-3xl mb-3">🔒</div>
+            <svg className="w-10 h-10 text-green-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
             <h4 className="font-semibold text-gray-900 mb-2">Secure</h4>
             <p className="text-sm text-gray-600">Files deleted after processing</p>
           </div>
           <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <div className="text-3xl mb-3">♾️</div>
+            <svg className="w-10 h-10 text-purple-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <h4 className="font-semibold text-gray-900 mb-2">No Limits</h4>
             <p className="text-sm text-gray-600">Merge as many files as you need</p>
           </div>
