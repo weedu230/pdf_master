@@ -36,7 +36,7 @@ const AboutPage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">Hi, I'm Waleed 👋</h2>
+              <h2 className="text-3xl font-bold text-gray-900">Hi, I'm Waleed</h2>
             </div>
             
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -88,7 +88,10 @@ const AboutPage = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <span className="text-2xl">⚛️</span> Frontend
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Frontend
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -114,7 +117,10 @@ const AboutPage = () => {
 
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <span className="text-2xl">🐍</span> Backend
+                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                  Backend
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
@@ -233,7 +239,7 @@ const AboutPage = () => {
                   <p className="text-3xl font-bold text-gray-900">0329-2270593</p>
                 </div>
                 <p className="text-sm text-gray-600 text-center italic">
-                  Every coffee ☕ helps keep the servers running and motivates me to build more!
+                  Every support helps keep the servers running and motivates me to build more!
                 </p>
               </div>
 
