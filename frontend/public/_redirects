@@ -1,0 +1,10 @@
+# Single Page Application routing - send all requests to index.html
+/* /index.html 200
+
+# Redirect HTTP to HTTPS (handled by Netlify by default)
+# Redirect www to non-www
+http://www.pdf-master-weedu.netlify.app/* https://pdf-master-weedu.netlify.app/:splat 301!
+https://www.pdf-master-weedu.netlify.app/* https://pdf-master-weedu.netlify.app/:splat 301!
+
+# Health check endpoint for backend
+/health 200
