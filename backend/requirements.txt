@@ -8,3 +8,4 @@ Pillow>=10.0.0
 python-dotenv>=1.0.0
 python-docx>=0.8.11
 pdf2docx>=0.5.1
+reportlab>=4.0.0

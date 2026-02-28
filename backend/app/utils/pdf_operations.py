@@ -19,15 +19,29 @@ import pikepdf
 
 def compress_pdf(input_path: str, output_path: str, quality: str = "medium"):
     """Compress a PDF file with specified quality level."""
+    # Map quality levels to object stream modes and compression settings
     quality_settings = {
-        "low": {"/PreserveHalftone": False, "/ColorImageResolution": 100},
-        "medium": {"/PreserveHalftone": False, "/ColorImageResolution": 150},
-        "high": {"/PreserveHalftone": True, "/ColorImageResolution": 300},
+        "low": {"object_stream_mode": pikepdf.ObjectStreamMode.generate, "compress_level": 9},
+        "medium": {"object_stream_mode": pikepdf.ObjectStreamMode.generate, "compress_level": 6},
+        "high": {"object_stream_mode": pikepdf.ObjectStreamMode.generate, "compress_level": 3},
     }
+    
+    settings = quality_settings.get(quality, quality_settings["medium"])
     
     try:
         with pikepdf.open(input_path) as pdf:
-            pdf.save(output_path, compress_streams=True, optimize_streams=True)
+            # Remove unused objects and compress
+            pdf.remove_unreferenced_resources()
+            
+            # Save with compression settings
+            pdf.save(
+                output_path,
+                compress_streams=True,
+                stream_decode_level=pikepdf.StreamDecodeLevel.generalized,
+                object_stream_mode=settings["object_stream_mode"],
+                normalize_content=True,
+                linearize=True
+            )
     except Exception as e:
         raise Exception(f"Error compressing PDF: {str(e)}")
 
