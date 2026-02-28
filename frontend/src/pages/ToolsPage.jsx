@@ -32,6 +32,20 @@ export default function ToolsPage() {
       features: ['Multiple image support', 'Auto page sizing', 'Preserve quality']
     },
     { 
+      path: '/word-to-pdf', 
+      title: 'Word to PDF', 
+      description: 'Convert Word documents (DOCX) into professional PDF files', 
+      color: 'from-cyan-500 to-cyan-600',
+      features: ['DOCX & DOC support', 'Preserve formatting', 'Fast conversion']
+    },
+    { 
+      path: '/pdf-to-word', 
+      title: 'PDF to Word', 
+      description: 'Convert PDF files to editable Word documents', 
+      color: 'from-indigo-500 to-indigo-600',
+      features: ['Editable output', 'Preserve content', 'Layout conversion']
+    },
+    { 
       path: '/protect', 
       title: 'Protect PDF', 
       description: 'Add password protection with AES-256 encryption', 

@@ -8,6 +8,8 @@ import PdfToJpgPage from './pages/PdfToJpgPage';
 import JpgToPdfPage from './pages/JpgToPdfPage';
 import ProtectPage from './pages/ProtectPage';
 import UnlockPage from './pages/UnlockPage';
+import WordToPdfPage from './pages/WordToPdfPage';
+import PdfToWordPage from './pages/PdfToWordPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -26,6 +28,8 @@ function App() {
           <Route path="/jpg-to-pdf" element={<JpgToPdfPage />} />
           <Route path="/protect" element={<ProtectPage />} />
           <Route path="/unlock" element={<UnlockPage />} />
+          <Route path="/word-to-pdf" element={<WordToPdfPage />} />
+          <Route path="/pdf-to-word" element={<PdfToWordPage />} />
         </Routes>
       </main>
       <Footer />

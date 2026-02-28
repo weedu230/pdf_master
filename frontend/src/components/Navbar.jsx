@@ -76,6 +76,18 @@ export default function Navbar() {
                     JPG to PDF
                   </Link>
                   <Link 
+                    to="/word-to-pdf" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    Word to PDF
+                  </Link>
+                  <Link 
+                    to="/pdf-to-word" 
+                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
+                  >
+                    PDF to Word
+                  </Link>
+                  <Link 
                     to="/protect" 
                     className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
                   >

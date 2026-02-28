@@ -7,6 +7,8 @@ export default function Home() {
     { path: '/compress', title: 'Compress PDF', description: 'Significantly reduce PDF file size while maintaining quality', color: 'from-orange-500 to-orange-600' },
     { path: '/pdf-to-jpg', title: 'PDF to JPG', description: 'Convert all PDF pages to high-quality JPG images', color: 'from-green-500 to-green-600' },
     { path: '/jpg-to-pdf', title: 'JPG to PDF', description: 'Convert images into a professional PDF document', color: 'from-purple-500 to-purple-600' },
+    { path: '/word-to-pdf', title: 'Word to PDF', description: 'Convert Word documents (DOCX) into professional PDF files', color: 'from-cyan-500 to-cyan-600' },
+    { path: '/pdf-to-word', title: 'PDF to Word', description: 'Convert PDF files to editable Word documents', color: 'from-indigo-500 to-indigo-600' },
     { path: '/protect', title: 'Protect PDF', description: 'Add password protection with AES-256 encryption', color: 'from-red-500 to-red-600' },
     { path: '/unlock', title: 'Unlock PDF', description: 'Remove password protection from PDF files', color: 'from-pink-500 to-pink-600' },
   ];

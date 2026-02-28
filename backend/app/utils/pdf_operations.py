@@ -95,3 +95,62 @@ def unlock_pdf(input_path: str, output_path: str, password: str = None):
         raise Exception("Incorrect password or PDF is not password-protected")
     except Exception as e:
         raise Exception(f"Error unlocking PDF: {str(e)}")
+
+
+def word_to_pdf(input_path: str, output_path: str):
+    """Convert a Word document (DOCX) to PDF."""
+    try:
+        from docx import Document
+        from docx.shared import Pt, Inches
+        
+        # Read the Word document
+        doc = Document(input_path)
+        
+        # For a simple approach, we'll use python-docx with reportlab
+        # In production, you might want to use more robust tools like LibreOffice
+        from reportlab.lib.pagesizes import letter
+        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
+        from reportlab.lib.units import inch
+        
+        # Create PDF
+        pdf = SimpleDocTemplate(output_path, pagesize=letter)
+        elements = []
+        styles = getSampleStyleSheet()
+        style = styles['Normal']
+        
+        # Extract text and structure from Word doc
+        for para in doc.paragraphs:
+            if para.text.strip():
+                elements.append(Paragraph(para.text, style))
+                elements.append(Spacer(1, 0.2*inch))
+        
+        # Handle tables if any
+        for table in doc.tables:
+            for row in table.rows:
+                row_text = " | ".join([cell.text for cell in row.cells])
+                if row_text.strip():
+                    elements.append(Paragraph(row_text, style))
+                    elements.append(Spacer(1, 0.1*inch))
+        
+        pdf.build(elements)
+        
+    except ImportError:
+        raise Exception("Required libraries not installed. Install python-docx and reportlab")
+    except Exception as e:
+        raise Exception(f"Error converting Word to PDF: {str(e)}")
+
+
+def pdf_to_word(input_path: str, output_path: str):
+    """Convert a PDF file to a Word document (DOCX)."""
+    try:
+        from pdf2docx import parse
+        
+        # Convert PDF to DOCX
+        parse(input_path, output_path)
+        
+    except ImportError:
+        raise Exception("Required library pdf2docx not installed")
+    except Exception as e:
+        raise Exception(f"Error converting PDF to Word: {str(e)}")
+

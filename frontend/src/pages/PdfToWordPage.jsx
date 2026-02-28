@@ -1,0 +1,159 @@
+import { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import axios from 'axios';
+import FileUpload from '../components/FileUpload';
+
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+
+export default function PdfToWordPage() {
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const handleFilesSelected = (selectedFiles) => {
+    if (selectedFiles.length > 0) {
+      setFile(selectedFiles[0]);
+      setError('');
+      setSuccess(false);
+    }
+  };
+
+  const handleConvert = async () => {
+    if (!file) {
+      setError('Please select a PDF file');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await axios.post(`${API_BASE}/pdf-to-word`, formData, {
+        responseType: 'blob',
+      });
+
+      // Create download link
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'converted.docx');
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      setSuccess(true);
+      setFile(null);
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Failed to convert PDF to Word');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>PDF to Word - PDF Master</title>
+        <meta name="description" content="Convert PDF files to editable Word documents instantly" />
+      </Helmet>
+
+      <div className="max-w-2xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">PDF to Word</h1>
+        <p className="text-gray-600 mb-8">Convert PDF files to editable Word documents instantly</p>
+
+        {!file ? (
+          <FileUpload
+            onFilesSelected={handleFilesSelected}
+            accept=".pdf"
+            multiple={false}
+          />
+        ) : (
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="flex items-center gap-4 mb-6">
+              <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <p className="font-medium text-gray-800">{file.name}</p>
+                <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleConvert}
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-lg"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Converting...
+                </span>
+              ) : (
+                'Convert to Word'
+              )}
+            </button>
+
+            <button
+              onClick={() => setFile(null)}
+              className="w-full mt-3 bg-gray-200 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-300 transition"
+            >
+              Choose Different File
+            </button>
+          </div>
+        )}
+
+        {error && (
+          <div className="mt-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
+            <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4v2m0 4v-1m0 0H7m5 0h5M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+            </svg>
+            <div>
+              <p className="font-semibold">Error</p>
+              <p className="text-sm">{error}</p>
+            </div>
+          </div>
+        )}
+
+        {success && (
+          <div className="mt-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+            <p className="font-semibold">Success! Your Word document is ready to download.</p>
+          </div>
+        )}
+
+        {/* Info Box */}
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <svg className="w-10 h-10 text-purple-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            <h4 className="font-semibold text-gray-900 mb-2">Editable Output</h4>
+            <p className="text-sm text-gray-600">Get fully editable Word documents</p>
+          </div>
+          <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <svg className="w-10 h-10 text-blue-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <h4 className="font-semibold text-gray-900 mb-2">Fast & Reliable</h4>
+            <p className="text-sm text-gray-600">Convert any PDF quickly with precision</p>
+          </div>
+          <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
+            <svg className="w-10 h-10 text-green-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <h4 className="font-semibold text-gray-900 mb-2">Private & Secure</h4>
+            <p className="text-sm text-gray-600">Your files are automatically deleted</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

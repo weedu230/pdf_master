@@ -262,3 +262,79 @@ async def unlock(background_tasks: BackgroundTasks, file: UploadFile = File(...)
         cleanup_file(temp_path)
         cleanup_file(output_path)
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/word-to-pdf")
+async def word_to_pdf_endpoint(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
+    """Convert a Word document (DOCX) to PDF."""
+    if file.content_type not in ["application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"]:
+        raise HTTPException(status_code=400, detail="File must be a Word document (.docx or .doc)")
+    
+    temp_path = None
+    output_path = None
+    
+    try:
+        # Save uploaded file
+        temp_path = create_temp_file(".docx")
+        content = await file.read()
+        with open(temp_path, "wb") as f:
+            f.write(content)
+        
+        # Convert to PDF
+        output_path = create_temp_file(".pdf")
+        from app.utils.pdf_operations import word_to_pdf
+        word_to_pdf(temp_path, output_path)
+        
+        # Schedule cleanup
+        background_tasks.add_task(cleanup_file, temp_path)
+        background_tasks.add_task(cleanup_file, output_path)
+        
+        return FileResponse(
+            output_path,
+            media_type="application/pdf",
+            filename="converted.pdf",
+            background=background_tasks
+        )
+    
+    except Exception as e:
+        cleanup_file(temp_path)
+        cleanup_file(output_path)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/pdf-to-word")
+async def pdf_to_word_endpoint(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
+    """Convert a PDF file to a Word document (DOCX)."""
+    if file.content_type != "application/pdf":
+        raise HTTPException(status_code=400, detail="File must be a PDF")
+    
+    temp_path = None
+    output_path = None
+    
+    try:
+        # Save uploaded file
+        temp_path = create_temp_file(".pdf")
+        content = await file.read()
+        with open(temp_path, "wb") as f:
+            f.write(content)
+        
+        # Convert to Word
+        output_path = create_temp_file(".docx")
+        from app.utils.pdf_operations import pdf_to_word
+        pdf_to_word(temp_path, output_path)
+        
+        # Schedule cleanup
+        background_tasks.add_task(cleanup_file, temp_path)
+        background_tasks.add_task(cleanup_file, output_path)
+        
+        return FileResponse(
+            output_path,
+            media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            filename="converted.docx",
+            background=background_tasks
+        )
+    
+    except Exception as e:
+        cleanup_file(temp_path)
+        cleanup_file(output_path)
+        raise HTTPException(status_code=500, detail=str(e))
