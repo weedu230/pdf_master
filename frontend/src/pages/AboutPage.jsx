@@ -1,16 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 
-const AboutPage = () => {
+export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>About - PDF Master</title>
-        <meta name="description" content="Learn about PDF Master - a student-built platform for fast, secure, and ad-free PDF tools." />
-      </Helmet>
-
-      {/* Hero Section */}
       <div className="bg-gradient-to-br from-red-500 to-red-600 text-white py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
@@ -266,6 +259,6 @@ const AboutPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AboutPage;
