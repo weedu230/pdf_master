@@ -29,7 +29,7 @@ export default function Navbar() {
             About
           </Link>
 
-          {/* Tools Dropdown */
+          {/* Tools Dropdown */}
           <div 
             className="relative group"
             onMouseEnter={() => setIsToolsOpen(true)}
@@ -89,13 +89,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
-          <Link 
-            to="/" 
-            className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 inline-block"
-          >
-            About
-          </Link>
 
           <Link 
             to="/tools" 
