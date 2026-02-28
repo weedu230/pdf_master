@@ -3,7 +3,7 @@
 Fast, free, privacy-focused PDF tools built with modern web technology. No signup required. Your PDFs are instantly deleted from our servers.
 
 **Live**: [pdf-master-weedu.netlify.app](https://pdf-master-weedu.netlify.app/)
-
+** OR **: [pdf-master-azure.vercel.app](https://pdf-master-azure.vercel.app/)
 ---
 
 ## Features
