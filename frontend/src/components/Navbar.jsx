@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
-export default function Navbar() {
+const Navbar = memo(() => {
   const [isToolsOpen, setIsToolsOpen] = useState(false);
 
   return (
@@ -19,14 +19,14 @@ export default function Navbar() {
         <div className="flex gap-8 items-center">
           <Link 
             to="/" 
-            className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 inline-block"
+            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 inline-block"
           >
             Home
           </Link>
 
           <Link 
             to="/about" 
-            className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 inline-block"
+            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 inline-block"
           >
             About
           </Link>
@@ -39,7 +39,7 @@ export default function Navbar() {
           >
             <Link 
               to="/tools"
-              className="text-gray-700 hover:text-red-600 font-medium transition duration-300 hover:scale-105 flex items-center gap-1"
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 flex items-center gap-1"
             >
               Tools
               <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,4 +114,7 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+});
+
+Navbar.displayName = 'Navbar';
+export default Navbar;

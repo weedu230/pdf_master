@@ -7,6 +7,25 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'routing': ['react-router-dom'],
+          'http': ['axios'],
+        }
+      }
+    },
+    chunkSizeWarningLimit: 500,
+  },
   server: {
     port: 3000,
     proxy: {

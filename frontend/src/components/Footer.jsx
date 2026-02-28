@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 
-export default function Footer() {
+const Footer = memo(() => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -14,27 +15,27 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold">PDF Master</span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">Professional PDF editing tools for everyone. Edit, merge, split, and convert your PDFs with ease.</p>
+            <p className="text-gray-200 text-sm leading-relaxed">Professional PDF editing tools for everyone. Edit, merge, split, and convert your PDFs with ease.</p>
           </div>
           
           <div>
             <h3 className="font-bold mb-4 text-white">Quick Links</h3>
-            <ul className="text-gray-400 space-y-3 text-sm">
-              <li><Link to="/" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Home</Link></li>
-              <li><Link to="/merge" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Tools</Link></li>
-              <li><Link to="/merge" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Upload</Link></li>
-              <li><a href="#" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Reviews</a></li>
+            <ul className="text-gray-200 space-y-3 text-sm">
+              <li><Link to="/" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Home</Link></li>
+              <li><Link to="/merge" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Tools</Link></li>
+              <li><Link to="/merge" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Upload</Link></li>
+              <li><a href="#" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Reviews</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-bold mb-4 text-white">Tools</h3>
-            <ul className="text-gray-400 space-y-3 text-sm">
-              <li><Link to="/merge" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Merge PDFs</Link></li>
-              <li><Link to="/compress" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Compress PDF</Link></li>
-              <li><Link to="/pdf-to-jpg" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">PDF to JPG</Link></li>
-              <li><Link to="/jpg-to-pdf" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">JPG to PDF</Link></li>
-              <li><Link to="/protect" className="hover:text-red-500 transition-colors duration-200 hover:translate-x-1 inline-block">Protect PDF</Link></li>
+            <ul className="text-gray-200 space-y-3 text-sm">
+              <li><Link to="/merge" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Merge PDFs</Link></li>
+              <li><Link to="/compress" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Compress PDF</Link></li>
+              <li><Link to="/pdf-to-jpg" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">PDF to JPG</Link></li>
+              <li><Link to="/jpg-to-pdf" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">JPG to PDF</Link></li>
+              <li><Link to="/protect" className="hover:text-red-400 transition-colors duration-200 hover:translate-x-1 inline-block">Protect PDF</Link></li>
             </ul>
           </div>
 
@@ -43,7 +44,7 @@ export default function Footer() {
             <div className="space-y-4">
               <a 
                 href="mailto:mwaleed256@gmail.com" 
-                className="flex items-center gap-3 text-gray-400 hover:text-red-500 transition-all duration-200 group"
+                className="flex items-center gap-3 text-gray-200 hover:text-red-400 transition-all duration-200 group"
               >
                 <div className="w-10 h-10 bg-gray-800 group-hover:bg-red-900 rounded-full flex items-center justify-center transition-colors duration-200">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -52,14 +53,14 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Email</p>
+                  <p className="text-xs text-gray-300">Email</p>
                   <p className="text-sm font-medium">mwaleed256@gmail.com</p>
                 </div>
               </a>
 
               <a 
                 href="tel:03332406306" 
-                className="flex items-center gap-3 text-gray-400 hover:text-red-500 transition-all duration-200 group"
+                className="flex items-center gap-3 text-gray-200 hover:text-red-400 transition-all duration-200 group"
               >
                 <div className="w-10 h-10 bg-gray-800 group-hover:bg-red-900 rounded-full flex items-center justify-center transition-colors duration-200">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -67,7 +68,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Phone</p>
+                  <p className="text-xs text-gray-300">Phone</p>
                   <p className="text-sm font-medium">+92 333-2406306</p>
                 </div>
               </a>
@@ -76,7 +77,7 @@ export default function Footer() {
                 href="https://github.com/weedu230" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-red-500 transition-all duration-200 group"
+                className="flex items-center gap-3 text-gray-200 hover:text-red-400 transition-all duration-200 group"
               >
                 <div className="w-10 h-10 bg-gray-800 group-hover:bg-red-900 rounded-full flex items-center justify-center transition-colors duration-200">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -84,7 +85,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">GitHub</p>
+                  <p className="text-xs text-gray-300">GitHub</p>
                   <p className="text-sm font-medium">github.com/weedu230</p>
                 </div>
               </a>
@@ -93,7 +94,7 @@ export default function Footer() {
                 href="https://linkedin.com/in/weedu" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-red-500 transition-all duration-200 group"
+                className="flex items-center gap-3 text-gray-200 hover:text-red-400 transition-all duration-200 group"
               >
                 <div className="w-10 h-10 bg-gray-800 group-hover:bg-red-900 rounded-full flex items-center justify-center transition-colors duration-200">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -101,7 +102,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">LinkedIn</p>
+                  <p className="text-xs text-gray-300">LinkedIn</p>
                   <p className="text-sm font-medium">linkedin.com/in/weedu</p>
                 </div>
               </a>
@@ -110,9 +111,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-500 text-sm">&copy; 2026 PDF Master. All rights reserved. | <a href="#" className="hover:text-red-500 transition">Privacy</a> | <a href="#" className="hover:text-red-500 transition">Terms</a></p>
+          <p className="text-gray-300 text-sm">&copy; 2026 PDF Master. All rights reserved. | <a href="#" className="hover:text-red-400 transition">Privacy</a> | <a href="#" className="hover:text-red-400 transition">Terms</a></p>
         </div>
       </div>
     </footer>
   );
-}
+});
+
+Footer.displayName = 'Footer';
+export default Footer;

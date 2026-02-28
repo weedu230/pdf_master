@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 
-export default function Home() {
+const Home = memo(() => {
   const tools = [
     { path: '/merge', title: 'Merge PDFs', description: 'Combine multiple PDF files into a single, organized document', color: 'from-blue-500 to-blue-600' },
     { path: '/compress', title: 'Compress PDF', description: 'Significantly reduce PDF file size while maintaining quality', color: 'from-orange-500 to-orange-600' },
@@ -63,13 +64,13 @@ export default function Home() {
             <div className="flex gap-4 justify-center">
               <Link 
                 to="/tools" 
-                className="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 animate-pulse-glow"
+                className="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 hover:-translate-y-1"
               >
                 Start Editing →
               </Link>
               <Link 
                 to="/tools" 
-                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-bold text-lg hover:border-red-500 hover:text-red-600 transition-all duration-300 hover:scale-105"
+                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-bold text-lg hover:border-red-500 hover:text-red-600 transition-colors duration-300 hover:scale-105"
               >
                 Upload Files
               </Link>
@@ -152,7 +153,7 @@ export default function Home() {
           <p className="text-red-100 text-lg mb-8">Start with any of our tools. No credit card required.</p>
           <Link 
             to="/tools" 
-            className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
           >
             Get Started Free
           </Link>
@@ -182,4 +183,7 @@ export default function Home() {
       </div>
     </>
   );
-}
+});
+
+Home.displayName = 'Home';
+export default Home;
