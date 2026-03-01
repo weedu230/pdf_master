@@ -174,14 +174,14 @@ const Home = memo(() => {
             <Link
               key={tool.path}
               to={tool.path}
-              className={`group bg-white rounded-2xl shadow-md hover:shadow-2xl p-5 md:p-8 transition-all duration-300 transform hover:scale-105 border border-gray-100 hover:border-gray-200 animate-fade-in-up-delay-${index % 3 + 1}`}
+              className={`group bg-white rounded-2xl shadow-md p-5 md:p-8 border border-gray-100 animate-fade-in-up-delay-${index % 3 + 1}`}
             >
-              <div className={`inline-block bg-gradient-to-br ${tool.color} p-3 md:p-4 rounded-xl mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`inline-block bg-gradient-to-br ${tool.color} p-3 md:p-4 rounded-xl mb-4 md:mb-6`}>
                 <div className="w-6 md:w-8 h-6 md:h-8 bg-white rounded-lg"></div>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 group-hover:text-red-600 transition-colors">{tool.title}</h3>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">{tool.title}</h3>
               <p className="text-sm md:text-base text-gray-600 mb-3 md:mb-4 leading-relaxed">{tool.description}</p>
-              <span className="text-red-600 font-semibold group-hover:translate-x-2 transition-transform inline-block">
+              <span className="text-red-600 font-semibold inline-block">
                 Use This Tool →
               </span>
             </Link>

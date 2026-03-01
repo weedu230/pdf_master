@@ -197,13 +197,13 @@ export default function ToolsPage() {
             <Link
               key={tool.path}
               to={tool.path}
-              className={`group bg-white rounded-2xl shadow-md hover:shadow-2xl p-5 md:p-8 transition-all duration-300 transform hover:scale-105 border border-gray-100 hover:border-gray-200 animate-fade-in-up-delay-${index % 3 + 1}`}
+              className={`group bg-white rounded-2xl shadow-md p-5 md:p-8 border border-gray-100 animate-fade-in-up-delay-${index % 3 + 1}`}
             >
-              <div className={`inline-block bg-gradient-to-br ${tool.color} p-3 md:p-4 rounded-xl mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`inline-block bg-gradient-to-br ${tool.color} p-3 md:p-4 rounded-xl mb-4 md:mb-6`}>
                 <div className="w-6 md:w-8 h-6 md:h-8 bg-white rounded-lg"></div>
               </div>
               
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3 group-hover:text-red-600 transition-colors">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
                 {tool.title}
               </h3>
               
