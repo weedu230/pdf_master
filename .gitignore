@@ -33,3 +33,7 @@ node_modules/
 dist/
 .env
 .env.*.local
+test_files/
+.pytest_cache/
+*.pyc
+__pycache__/
