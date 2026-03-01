@@ -3,6 +3,17 @@
   command = "npm install && npm run build"
   publish = "dist"
 
+[[headers]]
+  for = "/*.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+    X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/*.xml"
+  to = "/:splat.xml"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
