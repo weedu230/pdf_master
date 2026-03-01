@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
   const [expandedFaq, setExpandedFaq] = useState(0);
@@ -175,21 +176,8 @@ export default function AboutPage() {
     </div>
   );
 }
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>Secure temporary file handling</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>No forced login or signup</span>
-                </li>
-              </ul>
-            </div>
-          </div>
 
-          {/* Current Status */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 animate-fade-in-up-delay-3">
+export default AboutPage;
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
