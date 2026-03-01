@@ -2,68 +2,141 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pdf-master-weedu.netlify.app/</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pdf-master-weedu.netlify.app/merge</loc>
-    <lastmod>2026-02-28</lastmod>
+    <loc>https://pdf-master-weedu.netlify.app/tools</loc>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/about</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Organize PDF -->
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/merge</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/split</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/remove-pages</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/extract-pages</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Optimize PDF -->
   <url>
     <loc>https://pdf-master-weedu.netlify.app/compress</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pdf-master-weedu.netlify.app/pdf-to-word</loc>
-    <lastmod>2026-02-28</lastmod>
+    <loc>https://pdf-master-weedu.netlify.app/repair</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Convert To PDF -->
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/jpg-to-pdf</loc>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdf-master-weedu.netlify.app/word-to-pdf</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/powerpoint-to-pdf</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/excel-to-pdf</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Convert From PDF -->
   <url>
     <loc>https://pdf-master-weedu.netlify.app/pdf-to-jpg</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pdf-master-weedu.netlify.app/jpg-to-pdf</loc>
-    <lastmod>2026-02-28</lastmod>
+    <loc>https://pdf-master-weedu.netlify.app/pdf-to-word</loc>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Edit PDF -->
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/rotate</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/crop</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/watermark</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdf-master-weedu.netlify.app/page-numbers</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- PDF Security -->
   <url>
     <loc>https://pdf-master-weedu.netlify.app/protect</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdf-master-weedu.netlify.app/unlock</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- PDF Intelligence -->
   <url>
-    <loc>https://pdf-master-weedu.netlify.app/tools</loc>
-    <lastmod>2026-02-28</lastmod>
+    <loc>https://pdf-master-weedu.netlify.app/compare</loc>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pdf-master-weedu.netlify.app/about</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

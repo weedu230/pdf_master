@@ -3,30 +3,49 @@ import { useState, memo } from 'react';
 
 const Navbar = memo(() => {
   const [isToolsOpen, setIsToolsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [reviewText, setReviewText] = useState('');
+  const [reviewEmail, setReviewEmail] = useState('');
+
+  const handleReviewSubmit = () => {
+    if (reviewText.trim()) {
+      const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
+      const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
+      window.open(`mailto:mwaleedahmed256@gmail.com?subject=${subject}&body=${body}`, '_blank');
+      setReviewText('');
+      setReviewEmail('');
+      setShowReviewModal(false);
+    }
+  };
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+        {/* Logo */}
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <div className="bg-gradient-to-br from-red-500 to-red-600 p-2 rounded-lg">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 md:w-6 h-5 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           </div>
-          <span className="text-2xl font-bold text-gray-900">PDF Master</span>
+          <span className="text-lg md:text-2xl font-bold text-gray-900 hidden sm:inline">PDF Master</span>
         </Link>
 
-        <div className="flex gap-8 items-center">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex gap-6 lg:gap-8 items-center">
           <Link 
             to="/" 
-            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 inline-block"
+            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300"
           >
             Home
           </Link>
 
           <Link 
             to="/about" 
-            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 inline-block"
+            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300"
           >
             About
           </Link>
@@ -39,7 +58,7 @@ const Navbar = memo(() => {
           >
             <Link 
               to="/tools"
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 hover:scale-105 flex items-center gap-1"
+              className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300 flex items-center gap-1"
             >
               Tools
               <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,68 +68,142 @@ const Navbar = memo(() => {
 
             {/* Dropdown Menu */}
             {isToolsOpen && (
-              <div className="absolute bg-white shadow-2xl rounded-xl p-6 w-56 top-full left-1/2 transform -translate-x-1/2 mt-2 animate-fade-in-up border border-gray-100 z-50">
-                <div className="space-y-3">
-                  <Link 
-                    to="/merge" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    Merge PDF
-                  </Link>
-                  <Link 
-                    to="/compress" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    Compress PDF
-                  </Link>
-                  <Link 
-                    to="/pdf-to-jpg" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    PDF to JPG
-                  </Link>
-                  <Link 
-                    to="/jpg-to-pdf" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    JPG to PDF
-                  </Link>
-                  <Link 
-                    to="/word-to-pdf" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    Word to PDF
-                  </Link>
-                  <Link 
-                    to="/pdf-to-word" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    PDF to Word
-                  </Link>
-                  <Link 
-                    to="/protect" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    Protect PDF
-                  </Link>
-                  <Link 
-                    to="/unlock" 
-                    className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium hover:translate-x-1"
-                  >
-                    Unlock PDF
-                  </Link>
+              <div className="absolute bg-white shadow-2xl rounded-xl p-4 w-48 top-full left-1/2 transform -translate-x-1/2 mt-2 animate-fade-in-up border border-gray-100 z-50">
+                <div className="space-y-2">
+                  <Link to="/merge" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">Merge PDF</Link>
+                  <Link to="/compress" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">Compress PDF</Link>
+                  <Link to="/pdf-to-jpg" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">PDF to JPG</Link>
+                  <Link to="/jpg-to-pdf" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">JPG to PDF</Link>
+                  <Link to="/word-to-pdf" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">Word to PDF</Link>
+                  <Link to="/pdf-to-word" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">PDF to Word</Link>
+                  <Link to="/protect" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">Protect PDF</Link>
+                  <Link to="/unlock" className="block px-3 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm">Unlock PDF</Link>
                 </div>
               </div>
             )}
           </div>
 
-          <Link 
-            to="/tools" 
-            className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-xl transition duration-300 hover:scale-105 hover:-translate-y-1"
+          <button
+            onClick={() => setShowReviewModal(true)}
+            className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm"
           >
-            Get Started
-          </Link>
+            Review
+          </button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden text-gray-700 hover:text-red-600 transition-colors"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden z-40 border-t border-gray-200">
+            <div className="px-4 py-4 space-y-3">
+              <Link 
+                to="/" 
+                onClick={closeMobileMenu}
+                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
+              >
+                Home
+              </Link>
+
+              <Link 
+                to="/about" 
+                onClick={closeMobileMenu}
+                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
+              >
+                About
+              </Link>
+
+              <Link 
+                to="/tools" 
+                onClick={closeMobileMenu}
+                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
+              >
+                All Tools
+              </Link>
+
+              <div className="border-t border-gray-200 pt-3">
+                <p className="text-sm font-semibold text-gray-600 mb-2">Popular Tools</p>
+                <div className="space-y-2">
+                  <Link to="/merge" onClick={closeMobileMenu} className="block text-sm text-gray-700 hover:text-red-600 py-1">Merge PDF</Link>
+                  <Link to="/compress" onClick={closeMobileMenu} className="block text-sm text-gray-700 hover:text-red-600 py-1">Compress PDF</Link>
+                  <Link to="/pdf-to-jpg" onClick={closeMobileMenu} className="block text-sm text-gray-700 hover:text-red-600 py-1">PDF to JPG</Link>
+                  <Link to="/word-to-pdf" onClick={closeMobileMenu} className="block text-sm text-gray-700 hover:text-red-600 py-1">Word to PDF</Link>
+                  <Link to="/protect" onClick={closeMobileMenu} className="block text-sm text-gray-700 hover:text-red-600 py-1">Protect PDF</Link>
+                </div>
+              </div>
+
+              <button
+                onClick={() => {
+                  setShowReviewModal(true);
+                  closeMobileMenu();
+                }}
+                className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm mt-3"
+              >
+                Send Feedback
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Review Modal */}
+        {showReviewModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">Send Feedback</h3>
+                <button
+                  onClick={() => setShowReviewModal(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-gray-600 mb-4 text-sm md:text-base">What feature would you like us to add, remove, or improve?</p>
+              
+              <textarea
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+                placeholder="Share your feedback or feature request..."
+                className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none h-28 text-sm"
+              />
+              
+              <input
+                type="email"
+                value={reviewEmail}
+                onChange={(e) => setReviewEmail(e.target.value)}
+                placeholder="Your email (optional)"
+                className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"
+              />
+              
+              <div className="flex gap-3">
+                <button
+                  onClick={handleReviewSubmit}
+                  className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base"
+                >
+                  Submit
+                </button>
+                <button
+                  onClick={() => setShowReviewModal(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

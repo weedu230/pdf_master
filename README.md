@@ -1,178 +1,63 @@
-# PDF Master - Free Online PDF Tools
+# PDF Master ⚡
 
-Fast, free, privacy-focused PDF tools built with modern web technology. No signup required. Your PDFs are instantly deleted from our servers.
+**19 professional PDF tools** - merge, compress, convert, protect & more. Fast, free, privacy-first.
 
-**Live**: [pdf-master-weedu.netlify.app](https://pdf-master-weedu.netlify.app/)
- OR : [pdf-master-azure.vercel.app](https://pdf-master-azure.vercel.app/)
----
+🔗 **Live**: [pdf-master-weedu.netlify.app](https://pdf-master-weedu.netlify.app/)
 
 ## Features
 
-- **Merge PDFs** - Combine multiple PDF files into one
-- **Compress PDF** - Reduce file size while maintaining quality
-- **PDF to JPG** - Convert PDF pages to high-quality images
-- **JPG to PDF** - Convert images into professional PDFs
-- **Word to PDF** - Convert DOCX files to PDF
-- **PDF to Word** - Convert PDFs to editable documents
-- **Protect PDF** - Add AES-256 password protection
-- **Unlock PDF** - Remove password protection
-
----
-
-## Screenshots
-
-### Home Page
-<img width="1365" height="679" alt="image" src="https://github.com/user-attachments/assets/dd6e1799-51af-4df6-92c7-47d0cbff9b22" />
-
-
-### Tool Selection
-<img width="1366" height="684" alt="image" src="https://github.com/user-attachments/assets/adb30081-94f2-454f-a284-586e1d6db090" />
-
-
-
----
-
-## PageSpeed Insights
-
-- **Performance**: 100
-- **Accessibility**: 92+
-- **Best Practices**: 100
-- **SEO**: 100
-
----
-
-## Languages & Frameworks
-
-<img width="336" height="147" alt="image" src="https://github.com/user-attachments/assets/19e0718e-4983-48d2-b539-30c646758fc3" />
-
-
----
+**Organize**: Merge • Split • Remove Pages • Extract Pages  
+**Optimize**: Compress • Repair  
+**Convert To PDF**: JPG • Word • PowerPoint • Excel  
+**Convert From PDF**: JPG • Word  
+**Edit**: Rotate • Crop • Watermark • Page Numbers  
+**Security**: Protect • Unlock  
+**Intelligence**: Compare PDFs
 
 ## Tech Stack
 
-### Frontend
-- React 18 + Vite (Fast builds & HMR)
-- Tailwind CSS (Utility-first styling)
-- React Router v6 (Client-side routing)
-- Axios (HTTP client)
-- React Helmet (SEO & meta tags)
-- Code Splitting & Lazy Loading (Performance)
+**Frontend**: React 18, Vite, Tailwind CSS, React Router  
+**Backend**: FastAPI, Python 3.11, PyPDF2, pikepdf, pdf2image  
+**Deployment**: Netlify (Frontend), Railway/Vercel (Backend)
 
-### Backend
-- FastAPI (Python - async framework)
-- PyPDF2 (PDF manipulation)
-- pikepdf (Compression & encryption)
-- pdf2image (PDF conversions)
-- Pillow (Image processing)
+## Quick Start
 
-### Deployment
-- Netlify (Frontend)
-- Railway/Heroku (Backend)
+### Windows
+```bat
+start.bat
+```
 
----
+### Linux/Mac
+```bash
+./start.sh
+```
 
-
-
-## Getting Started (Local Development)
-
-### Prerequisites
-- Node.js v16+ (https://nodejs.org)
-- Python 3.8+ (https://python.org)
-- Git (https://git-scm.com)
-
-### Backend Setup
-
-\\\powershell
+Or manually:
+```bash
+# Backend
 cd backend
 python -m venv venv
-.\venv\Scripts\Activate.ps1
+source venv/bin/activate  # or: .\venv\Scripts\Activate.ps1 (Windows)
 pip install -r requirements.txt
-python -m uvicorn app.main:app --reload --port 8000
-\\\
+uvicorn app.main:app --reload --port 8000
 
-Backend: http://localhost:8000 | Docs: http://localhost:8000/docs
-
-### Frontend Setup
-
-\\\powershell
+# Frontend (new terminal)
 cd frontend
 npm install
 npm run dev
-\\\
+```
 
-Frontend: http://localhost:5173
-
----
-
-## Build & Deploy
-
-### Build Production
-
-\\\powershell
-cd frontend
-npm run build
-\\\
-
-Output: \rontend/dist/\
-
-### Netlify Deployment (Automatic)
-
-Push to main branch triggers:
-- Build: \
-pm install && npm run build\
-- Publish: \rontend/dist\
-- Backend: Deploy separately (Railway, Heroku, AWS)
-
----
+**URLs**: Frontend: `http://localhost:3000` | Backend: `http://localhost:8000`
 
 ## Privacy & Security
 
-- Files automatically deleted after processing
-- No user accounts or tracking
-- HTTPS only
-- AES-256 encryption
-- CORS configured
-
----
-
-## API Endpoints
-
-- POST /api/merge - Merge PDFs
-- POST /api/compress - Compress PDF
-- POST /api/pdf-to-jpg - Convert PDF to JPG
-- POST /api/jpg-to-pdf - Convert JPG to PDF
-- POST /api/word-to-pdf - Convert DOCX to PDF
-- POST /api/pdf-to-word - Convert PDF to DOCX
-- POST /api/protect - Add password protection
-- POST /api/unlock - Remove password protection
-
----
-
-## Troubleshooting
-
-**Backend won't start?**
-- Ensure Python 3.8+ installed
-- Venv activated: \.\venv\Scripts\Activate.ps1\
-- Dependencies installed: \pip install -r requirements.txt\
-
-**Frontend npm errors?**
-- Delete \
-ode_modules\ and \package-lock.json\
-- Run \
-pm install\ again
-- Ensure Node v16+: \
-ode --version\
-
----
+✅ Files auto-deleted after processing  
+✅ No account/signup required  
+✅ AES-256 encryption for protected PDFs  
+✅ HTTPS only
 
 ## License
 
-MIT - Free to use
+MIT - [Waleed Ahmed](https://github.com/weedu230)
 
----
-
-## Author
-
-[weedu230](https://github.com/weedu230)
-
-GitHub: https://github.com/weedu230 | LinkedIn: https://linkedin.com/in/weedu
+**Feedback**: mwaleedahmed256@gmail.com

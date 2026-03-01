@@ -1,23 +1,28 @@
-# PDF Master Backend API
+# PDF Master Backend
 
-FastAPI-based backend for PDF manipulation tools.
+FastAPI backend for PDF manipulation.
 
-## Features
-- Merge PDFs
-- Compress PDFs
-- Convert PDF to JPG
-- Convert JPG to PDF
-- Protect PDFs with password
-- Unlock PDFs
-- CORS enabled
-- Health check endpoint
-
-## Installation
+## Development
 
 ```bash
-cd backend
+python -m venv venv
+source venv/bin/activate  # or: .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
 ```
+
+## API Documentation
+
+Visit `http://localhost:8000/docs` for interactive API docs.
+
+## Tech Stack
+
+- FastAPI for REST API
+- PyPDF2 for PDF manipulation
+- pikepdf for compression
+- pdf2image, Pillow for image conversion
+- python-docx, pdf2docx for Word conversion
+- reportlab for PDF generation
 
 ## Development
 
@@ -35,12 +40,38 @@ Once the server is running:
 
 ## Endpoints
 
+### Organize PDF
 - `POST /api/merge` - Merge multiple PDFs
+- `POST /api/split` - Split PDF into individual pages (returns ZIP)
+- `POST /api/remove-pages` - Remove specific pages (comma-separated)
+- `POST /api/extract-pages` - Extract selected pages
+
+### Optimize PDF
 - `POST /api/compress` - Compress a PDF
-- `POST /api/pdf-to-jpg` - Convert PDF to JPG images
+- `POST /api/repair` - Repair corrupted PDF
+
+### Convert To PDF
 - `POST /api/jpg-to-pdf` - Convert JPG images to PDF
+- `POST /api/word-to-pdf` - Convert Word (DOCX) to PDF
+- `POST /api/powerpoint-to-pdf` - Convert PowerPoint to PDF
+- `POST /api/excel-to-pdf` - Convert Excel to PDF
+
+### Convert From PDF
+- `POST /api/pdf-to-jpg` - Convert PDF to JPG images (returns ZIP)
+- `POST /api/pdf-to-word` - Convert PDF to Word (DOCX)
+
+### Edit PDF
+- `POST /api/rotate` - Rotate PDF pages (angle: 90/180/270)
+- `POST /api/crop` - Crop PDF pages (requires coordinates)
+- `POST /api/watermark` - Add text watermark (custom text + opacity)
+- `POST /api/page-numbers` - Add page numbers (configurable position)
+
+### PDF Security
 - `POST /api/protect` - Add password protection
 - `POST /api/unlock` - Remove password protection
+
+### PDF Intelligence
+- `POST /api/compare` - Compare two PDFs (returns JSON)
 
 ## Environment Variables
 
@@ -55,11 +86,15 @@ SECRET_KEY=your-secret-key-here
 
 - FastAPI - Web framework
 - Uvicorn - ASGI server
-- PyPDF2 - PDF merging
+- PyPDF2 - PDF manipulation
 - pikepdf - PDF compression & encryption
 - pdf2image - PDF to image conversion
 - Pillow - Image processing
+- python-docx - Word document handling
+- pdf2docx - PDF to Word conversion
+- reportlab - PDF generation
 - python-multipart - Form data parsing
+- python-dotenv - Environment variables
 
 ## Production Deployment
 

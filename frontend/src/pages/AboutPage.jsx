@@ -1,153 +1,180 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 export default function AboutPage() {
+  const [expandedFaq, setExpandedFaq] = useState(0);
+
+  const faqs = [
+    {
+      question: "Is my data safe? Do you store my files?",
+      answer: "Your privacy is our top priority. All files are processed temporarily on our secure servers and automatically deleted after conversion. We never store, share, or access your files for any reason. Your data is yours alone."
+    },
+    {
+      question: "What file sizes can I upload?",
+      answer: "You can upload files up to 100MB. For most common PDF operations, this covers the vast majority of use cases. If you need to process larger files, feel free to reach out with your requirements."
+    },
+    {
+      question: "Do I need to create an account?",
+      answer: "No account needed! PDF Master is completely free and anonymous. Start converting, merging, or editing PDFs instantly without any registration or login."
+    },
+    {
+      question: "Which browsers are supported?",
+      answer: "PDF Master works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience."
+    },
+    {
+      question: "Can I use this offline?",
+      answer: "PDF Master requires an internet connection as files are processed on our servers. However, we're exploring offline capabilities for future releases."
+    },
+    {
+      question: "What makes PDF Master different?",
+      answer: "PDF Master is built by a student for everyone. No ads, no forced logins, no upselling. Just simple, fast, and privacy-focused PDF tools. Clean interface, powerful backend, zero complications."
+    },
+    {
+      question: "How much does it cost?",
+      answer: "Completely free! All 19 PDF tools are available at no cost. We believe great tools should be accessible to everyone."
+    },
+    {
+      question: "Will you add more tools in the future?",
+      answer: "Absolutely! We're constantly working on new features based on user feedback. Click 'Review' in the navbar to suggest features you'd like to see."
+    }
+  ];
+
+  const techStack = [
+    {
+      category: "Frontend",
+      icon: "⚛️",
+      technologies: [
+        "React 18 with modern hooks",
+        "Vite 5.4 for lightning-fast builds",
+        "Tailwind CSS 4.1 for responsive UI",
+        "React Router v6 for navigation",
+        "Axios for API communication"
+      ]
+    },
+    {
+      category: "Backend",
+      icon: "🐍",
+      technologies: [
+        "Python 3.11 with FastAPI",
+        "Uvicorn async server",
+        "PyPDF2 for PDF manipulation",
+        "pikepdf for compression",
+        "pdf2image & Pillow for image conversion",
+        "python-docx for Word documents",
+        "reportlab for PDF generation"
+      ]
+    },
+    {
+      category: "Deployment",
+      icon: "🚀",
+      technologies: [
+        "Netlify for frontend hosting",
+        "Railway/Vercel for backend",
+        "Automated CI/CD pipeline",
+        "Docker containerization",
+        "GitHub for version control"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-br from-red-500 to-red-600 text-white py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Built by a Student, For Everyone
+      {/* Header */}
+      <div className="bg-gradient-to-br from-red-500 to-red-600 text-white py-10 md:py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
+              About PDF Master
             </h1>
-            <p className="text-xl md:text-2xl text-red-100">
-              A solo project focused on simplicity, speed, and privacy
+            <p className="text-base md:text-lg lg:text-2xl text-red-100">
+              A free, fast, and privacy-first PDF toolkit
             </p>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-4 md:px-6 py-10 md:py-16">
         <div className="max-w-4xl mx-auto">
           
-          {/* Introduction */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 animate-fade-in-up-delay-1">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900">Hi, I'm Waleed</h2>
+          {/* Tech Stack Section */}
+          <div className="mb-12 md:mb-16">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 md:mb-3">Built With Modern Tech</h2>
+              <p className="text-base md:text-lg text-gray-600">Cutting-edge technologies powering PDF Master</p>
             </div>
-            
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              I'm a <strong>Software Engineering student</strong> building this platform while studying and experimenting with real-world systems. This isn't backed by a big company or VC funding—it's just me, learning and building in public.
-            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {techStack.map((stack, idx) => (
+                <div key={idx} className="bg-white rounded-2xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow">
+                  <div className="text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4">{stack.icon}</div>
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4">{stack.category}</h3>
+                  <ul className="space-y-2 md:space-y-3">
+                    {stack.technologies.map((tech, i) => (
+                      <li key={i} className="flex items-start gap-2 md:gap-3">
+                        <svg className="w-4 md:w-5 h-4 md:h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-sm md:text-base text-gray-700">{tech}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* The Problem */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 animate-fade-in-up-delay-2">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900">Why I Built This</h2>
-            </div>
-            
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              It started with a simple frustration:
-            </p>
-            
-            <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg mb-6">
-              <p className="text-lg text-gray-800 italic">
-                "Why are basic PDF tools either slow, overloaded with ads, or forcing signups for simple tasks?"
-              </p>
+          {/* FAQ Section */}
+          <div>
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 md:mb-3">Frequently Asked Questions</h2>
+              <p className="text-base md:text-lg text-gray-600">Everything you need to know about PDF Master</p>
             </div>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
-              I wanted something <strong>fast</strong>, <strong>clean</strong>, and <strong>privacy-focused</strong>. So instead of complaining, I decided to build it myself.
-            </p>
+            <div className="space-y-3 md:space-y-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden">
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
+                    className="w-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-sm md:text-base lg:text-lg font-semibold text-gray-900 text-left">{faq.question}</h3>
+                    <svg 
+                      className={`w-5 md:w-6 h-5 md:h-6 text-red-500 transition-transform flex-shrink-0 ${expandedFaq === idx ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </button>
+                  {expandedFaq === idx && (
+                    <div className="px-4 md:px-6 py-3 md:py-4 bg-gray-50 border-t border-gray-200">
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* The Journey */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 animate-fade-in-up-delay-3">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900">The Tech Behind It</h2>
-            </div>
-            
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Over the past few months, I've been designing and developing this platform using modern web technologies, focusing on creating a seamless and secure experience.
+          {/* CTA Section */}
+          <div className="mt-12 md:mt-16 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-6 md:p-8 lg:p-12 text-center text-white">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Ready to try PDF Master?</h3>
+            <p className="text-red-100 text-base md:text-lg mb-4 md:mb-6">
+              All tools are free and completely anonymous. No signup required.
             </p>
+            <a 
+              href="/tools"
+              className="inline-block bg-white text-red-600 px-6 md:px-8 py-2 md:py-3 rounded-lg font-bold text-sm md:text-base hover:bg-gray-100 transition-colors"
+            >
+              Explore All Tools →
+            </a>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  Frontend
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>React 18 with modern hooks</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Vite for lightning-fast builds</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Tailwind CSS for clean UI</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                  Backend
-                </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Python with FastAPI</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>High-performance async processing</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Secure file handling with auto-cleanup</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl border border-red-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Core Principles</h3>
-              <ul className="grid md:grid-cols-2 gap-3 text-gray-700">
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>Clean and minimal interface</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>Fast backend processing</span>
+        </div>
+      </div>
+    </div>
+  );
+}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-red-500">•</span>

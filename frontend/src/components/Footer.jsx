@@ -5,7 +5,7 @@ const Footer = memo(() => {
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-12 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-gradient-to-br from-red-500 to-red-600 p-2 rounded-lg">

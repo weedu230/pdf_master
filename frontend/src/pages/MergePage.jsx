@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import FileUpload from '../components/FileUpload';
 
@@ -60,47 +60,47 @@ export default function MergePage() {
       </Helmet>
 
       {/* Header */}
-      <div className="bg-gradient-to-b from-blue-50 to-white py-12 border-b border-blue-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl">
-              <span className="text-2xl">📎</span>
+      <div className="bg-gradient-to-b from-blue-50 to-white py-8 md:py-12 border-b border-blue-100">
+        <div className="max-w-4xl mx-auto px-4 md:px-6">
+          <div className="flex items-center gap-3 md:gap-4 mb-2 md:mb-4">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-2 md:p-3 rounded-xl">
+              <span className="text-lg md:text-2xl">📎</span>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900">Merge PDFs</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">Merge PDFs</h1>
           </div>
-          <p className="text-lg text-gray-600">Combine multiple PDF files into a single, organized document.</p>
+          <p className="text-sm md:text-base lg:text-lg text-gray-600 px-12 md:px-0">Combine multiple PDF files into a single, organized document.</p>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Select PDF Files</h2>
+      <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100">
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Select PDF Files</h2>
             <FileUpload onFilesSelected={handleFilesSelected} accept=".pdf" multiple />
           </div>
 
           {files.length > 0 && (
-            <div className="mt-8">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-gray-900">Selected Files</h3>
-                <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">{files.length} file{files.length !== 1 ? 's' : ''}</span>
+            <div className="mt-6 md:mt-8">
+              <div className="flex items-center justify-between mb-4 md:mb-6">
+                <h3 className="text-base md:text-lg font-semibold text-gray-900">Selected Files</h3>
+                <span className="bg-blue-100 text-blue-700 px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-semibold">{files.length} file{files.length !== 1 ? 's' : ''}</span>
               </div>
               
-              <div className="space-y-3 mb-8">
+              <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
                 {files.map((file, index) => (
-                  <div key={index} className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition">
-                    <div className="flex items-center gap-3 flex-1">
-                      <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div key={index} className="flex justify-between items-center bg-gradient-to-r from-gray-50 to-gray-100 p-3 md:p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition">
+                    <div className="flex items-center gap-2 md:gap-3 flex-1">
+                      <svg className="w-5 md:w-6 h-5 md:h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                       </svg>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-gray-800 truncate">{file.name}</p>
-                        <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                        <p className="font-medium text-sm md:text-base text-gray-800 truncate">{file.name}</p>
+                        <p className="text-xs md:text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                       </div>
                     </div>
                     <button
                       onClick={() => removeFile(index)}
-                      className="ml-4 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition font-medium"
+                      className="ml-2 md:ml-4 text-red-600 hover:text-red-700 hover:bg-red-50 px-2 md:px-3 py-1 md:py-2 rounded-lg transition font-medium text-sm md:text-base"
                     >
                       Remove
                     </button>
@@ -111,7 +111,7 @@ export default function MergePage() {
               <button
                 onClick={handleMerge}
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-lg"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 md:py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-base md:text-lg"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -129,46 +129,46 @@ export default function MergePage() {
           )}
 
           {error && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
-              <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="mt-4 md:mt-6 p-3 md:p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-2 md:gap-3">
+              <svg className="w-5 md:w-6 h-5 md:h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4v2m0 4v-1m0 0H7m5 0h5M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
               </svg>
               <div>
-                <p className="font-semibold">Error</p>
-                <p className="text-sm">{error}</p>
+                <p className="font-semibold text-sm md:text-base">Error</p>
+                <p className="text-xs md:text-sm">{error}</p>
               </div>
             </div>
           )}
 
           {files.length === 0 && (
-            <div className="text-center py-8">
-              <p className="text-gray-500 text-lg">Start by uploading 2 or more PDF files above</p>
+            <div className="text-center py-6 md:py-8">
+              <p className="text-gray-500 text-sm md:text-lg">Start by uploading 2 or more PDF files above</p>
             </div>
           )}
         </div>
 
         {/* Info Box */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <svg className="w-10 h-10 text-blue-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="bg-blue-50 rounded-lg p-4 md:p-6 border border-blue-200">
+            <svg className="w-8 md:w-10 h-8 md:h-10 text-blue-600 mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <h4 className="font-semibold text-gray-900 mb-2">Fast Merging</h4>
-            <p className="text-sm text-gray-600">Combine your PDFs in seconds</p>
+            <h4 className="font-semibold text-sm md:text-base text-gray-900 mb-1 md:mb-2">Fast Merging</h4>
+            <p className="text-xs md:text-sm text-gray-600">Combine your PDFs in seconds</p>
           </div>
-          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <svg className="w-10 h-10 text-green-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-blue-50 rounded-lg p-4 md:p-6 border border-blue-200">
+            <svg className="w-8 md:w-10 h-8 md:h-10 text-green-600 mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            <h4 className="font-semibold text-gray-900 mb-2">Secure</h4>
-            <p className="text-sm text-gray-600">Files deleted after processing</p>
+            <h4 className="font-semibold text-sm md:text-base text-gray-900 mb-1 md:mb-2">Secure</h4>
+            <p className="text-xs md:text-sm text-gray-600">Files deleted after processing</p>
           </div>
-          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <svg className="w-10 h-10 text-purple-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-blue-50 rounded-lg p-4 md:p-6 border border-blue-200">
+            <svg className="w-8 md:w-10 h-8 md:h-10 text-purple-600 mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h4 className="font-semibold text-gray-900 mb-2">No Limits</h4>
-            <p className="text-sm text-gray-600">Merge as many files as you need</p>
+            <h4 className="font-semibold text-sm md:text-base text-gray-900 mb-1 md:mb-2">No Limits</h4>
+            <p className="text-xs md:text-sm text-gray-600">Merge as many files as you need</p>
           </div>
         </div>
       </div>

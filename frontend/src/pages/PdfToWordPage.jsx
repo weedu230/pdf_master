@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import FileUpload from '../components/FileUpload';
 
@@ -74,9 +74,9 @@ export default function PdfToWordPage() {
         </script>
       </Helmet>
 
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">PDF to Word</h1>
-        <p className="text-gray-600 mb-8">Convert PDF files to editable Word documents instantly</p>
+      <div className="max-w-2xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">PDF to Word</h1>
+        <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8">Convert PDF files to editable Word documents instantly</p>
 
         {!file ? (
           <FileUpload
@@ -85,21 +85,21 @@ export default function PdfToWordPage() {
             multiple={false}
           />
         ) : (
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="flex items-center gap-4 mb-6">
+          <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
+            <div className="flex items-center gap-4 mb-4 md:mb-6">
               <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
               <div>
-                <p className="font-medium text-gray-800">{file.name}</p>
-                <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p className="font-medium text-sm md:text-base text-gray-800">{file.name}</p>
+                <p className="text-xs md:text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
               </div>
             </div>
 
             <button
               onClick={handleConvert}
               disabled={loading}
-              className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-lg"
+              className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-3 md:py-4 rounded-lg hover:shadow-lg disabled:bg-gray-400 disabled:shadow-none transition duration-300 text-base md:text-lg"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -116,7 +116,7 @@ export default function PdfToWordPage() {
 
             <button
               onClick={() => setFile(null)}
-              className="w-full mt-3 bg-gray-200 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-300 transition"
+              className="w-full mt-3 bg-gray-200 text-gray-700 font-bold py-2 md:py-3 rounded-lg hover:bg-gray-300 transition text-sm md:text-base"
             >
               Choose Different File
             </button>
@@ -124,20 +124,20 @@ export default function PdfToWordPage() {
         )}
 
         {error && (
-          <div className="mt-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
+          <div className="mt-4 md:mt-6 p-3 md:p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg flex items-start gap-3">
             <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4v2m0 4v-1m0 0H7m5 0h5M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
             </svg>
             <div>
-              <p className="font-semibold">Error</p>
-              <p className="text-sm">{error}</p>
+              <p className="font-semibold text-sm md:text-base">Error</p>
+              <p className="text-xs md:text-sm">{error}</p>
             </div>
           </div>
         )}
 
         {success && (
-          <div className="mt-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
-            <p className="font-semibold">Success! Your Word document is ready to download.</p>
+          <div className="mt-4 md:mt-6 p-3 md:p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+            <p className="font-semibold text-sm md:text-base">Success! Your Word document is ready to download.</p>
           </div>
         )}
 
