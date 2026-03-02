@@ -1,47 +1,47 @@
-# PDF Master ⚡
+# PDF Master
 
-> **19 professional PDF tools** - merge, compress, convert, protect & more. Fast, free, privacy-first.
+**19 professional PDF tools** - merge, compress, convert, protect & more. Fast, free, privacy-first.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://pdf-master-azure.vercel.app/)
 [![Performance](https://img.shields.io/badge/Lighthouse-100-brightgreen?style=for-the-badge&logo=lighthouse)](https://pagespeed.web.dev/)
 [![Accessibility](https://img.shields.io/badge/A11y-100-brightgreen?style=for-the-badge)](https://pagespeed.web.dev/)
 
-## ✨ Features
+## Features
 
-### 📁 Organize PDF
+### Organize PDF
 - **Merge** - Combine multiple PDFs into one
 - **Split** - Break PDF into separate files
 - **Remove Pages** - Delete specific pages
 - **Extract Pages** - Extract pages to new PDF
 
-### ⚡ Optimize PDF
+### Optimize PDF
 - **Compress** - Reduce file size with quality control
 - **Repair** - Fix corrupted or damaged PDFs
 
-### 🔄 Convert to PDF
+### Convert to PDF
 - **JPG to PDF** - Convert images to PDF
 - **Word to PDF** - Convert DOCX files
 - **PowerPoint to PDF** - Convert PPTX presentations
 - **Excel to PDF** - Convert XLSX spreadsheets
 
-### 📤 Convert from PDF
+### Convert from PDF
 - **PDF to JPG** - Export pages as images
 - **PDF to Word** - Convert to editable DOCX
 
-### ✏️ Edit PDF
+### Edit PDF
 - **Rotate** - Rotate pages 90°/180°/270°
 - **Crop** - Trim page margins
 - **Watermark** - Add text watermarks
 - **Page Numbers** - Add custom page numbering
 
-### 🔒 Security
+### Security
 - **Protect** - Add password protection (AES-256)
 - **Unlock** - Remove password from PDFs
 
-### 🤖 Intelligence
+### Intelligence
 - **Compare** - Analyze differences between PDFs
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 18** - Modern UI library
@@ -66,7 +66,7 @@
 - **Vercel** - Backend API hosting
 - **GitHub** - Version control
 
-## 📦 Quick Start
+## Quick Start
 
 ### Backend Setup
 ```bash
@@ -87,39 +87,39 @@ npm run dev
 - **Backend API**: http://localhost:8000
 - **API Docs**: http://localhost:8000/docs
 
-## 🎯 Performance
+## Performance
 
-- ⚡ **100/100** - Performance Score
-- ♿ **100/100** - Accessibility Score
-- ✅ **100/100** - Best Practices Score
-- 🔍 **100/100** - SEO Score
+- **100/100** - Performance Score
+- **100/100** - Accessibility Score
+- **100/100** - Best Practices Score
+- **100/100** - SEO Score
 
 ### Optimizations
-- Code splitting & lazy loading
-- Aggressive caching (31536000s for assets)
-- Preconnect & DNS prefetch
-- Route-based chunking
-- Error boundaries with auto-retry
-- CSP & security headers
+- Code splitting and lazy loading
+- Aggressive caching (31536000s for immutable assets)
+- Preconnect and DNS prefetch
+- Route-based code chunking
+- Error boundaries with automatic retry
+- Content Security Policy (CSP) headers
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
-✅ **No Data Storage** - Files auto-deleted after processing  
-✅ **No Sign-up Required** - Use instantly, no account needed  
-✅ **AES-256 Encryption** - Military-grade PDF protection  
-✅ **HTTPS Only** - Secure connections enforced  
-✅ **Client-Side Processing** - Many operations run in browser  
-✅ **WCAG AA Compliant** - Accessible to all users
+- **No Data Storage** - Files automatically deleted after processing
+- **No Sign-up Required** - Use instantly, no account needed
+- **AES-256 Encryption** - Military-grade PDF protection
+- **HTTPS Only** - Secure connections enforced
+- **Client-Side Processing** - Many operations run in browser
+- **WCAG AA Compliant** - Accessible to all users
 
-## 🧪 Testing
+## Testing
 
 All 19 PDF tools tested and verified:
-- ✅ API endpoint testing
-- ✅ File validation
-- ✅ Error handling
-- ✅ Response verification
+- API endpoint testing
+- File validation
+- Error handling
+- Response verification (100% pass rate)
 
-## 🛠️ Development
+## Development
 
 ### Project Structure
 ```
@@ -138,32 +138,32 @@ pdf-master/
 ```
 
 ### Key Features
-- Lazy loading with automatic retry
-- Error boundaries for graceful failures
-- Responsive design (mobile-first)
+- Lazy loading with automatic retry mechanism
+- Error boundaries for graceful failure handling
+- Responsive design (mobile-first approach)
 - Dark mode support
 - SEO optimized
 - PWA ready
 
-## 📊 Browser Support
+## Browser Support
 
-- ✅ Chrome/Edge (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Mobile browsers
+- Chrome/Edge (latest versions)
+- Firefox (latest versions)
+- Safari (latest versions)
+- Mobile browsers
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to:
 - Report bugs
 - Suggest features
 - Submit pull requests
 
-## 📝 License
+## License
 
 MIT License - [Waleed Ahmed](https://github.com/weedu230)
 
-## 📧 Contact
+## Contact
 
 - **Email**: mwaleedahmed256@gmail.com
 - **GitHub**: [@weedu230](https://github.com/weedu230)
@@ -171,4 +171,4 @@ MIT License - [Waleed Ahmed](https://github.com/weedu230)
 
 ---
 
-<p align="center">Made with ❤️ by a student developer</p>
+Made with dedication by a student developer
