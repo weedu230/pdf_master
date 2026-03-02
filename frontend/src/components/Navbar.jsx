@@ -69,6 +69,8 @@ const Navbar = memo(() => {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden text-gray-700 hover:text-red-600 transition-colors"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMobileMenuOpen}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMobileMenuOpen ? (
