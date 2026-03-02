@@ -2,7 +2,7 @@
 
 **19 professional PDF tools** - merge, compress, convert, protect & more. Fast, free, privacy-first.
 
-🔗 **Live**: [pdf-master-weedu.netlify.app](https://pdf-master-weedu.netlify.app/)
+🔗 **Live**: [[pdf-master-azure.vercel.app](https://pdf-master-azure.vercel.app/)]
 
 ## Features
 
