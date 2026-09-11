@@ -8,11 +8,13 @@ const Navbar = memo(() => {
   const [reviewText, setReviewText] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
 
-  const handleReviewSubmit = () => {
+  const handleReviewSubmit = (e) => {
+    e?.preventDefault?.();
+
     if (reviewText.trim()) {
       const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
       const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
-      window.open(`mailto:mwaleedahmed256@gmail.com?subject=${subject}&body=${body}`, '_blank');
+      window.location.href = `mailto:mwaleedahmed256@gmail.com?subject=${subject}&body=${body}`;
       setReviewText('');
       setReviewEmail('');
       setShowReviewModal(false);
@@ -36,42 +38,14 @@ const Navbar = memo(() => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 lg:gap-8 items-center">
-          <Link 
-            to="/" 
-            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300"
-          >
-            Home
-          </Link>
-
-          <Link 
-            to="/about" 
-            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300"
-          >
-            About
-          </Link>
-
-          <Link 
-            to="/tools"
-            className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300"
-          >
-            Tools
-          </Link>
-
-          <button
-            onClick={() => setShowReviewModal(true)}
-            className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm"
-          >
-            Review
-          </button>
+          <Link to="/" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Home</Link>
+          <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">About</Link>
+          <Link to="/tools" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Tools</Link>
+          <button onClick={() => setShowReviewModal(true)} className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm">Review</button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-gray-700 hover:text-red-600 transition-colors"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMobileMenuOpen}
-        >
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-gray-700 hover:text-red-600 transition-colors" aria-label="Toggle navigation menu" aria-expanded={isMobileMenuOpen}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -85,29 +59,9 @@ const Navbar = memo(() => {
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden z-40 border-t border-gray-200">
             <div className="px-4 py-4 space-y-3">
-              <Link 
-                to="/" 
-                onClick={closeMobileMenu}
-                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
-              >
-                Home
-              </Link>
-
-              <Link 
-                to="/about" 
-                onClick={closeMobileMenu}
-                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
-              >
-                About
-              </Link>
-
-              <Link 
-                to="/tools" 
-                onClick={closeMobileMenu}
-                className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2"
-              >
-                All Tools
-              </Link>
+              <Link to="/" onClick={closeMobileMenu} className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Home</Link>
+              <Link to="/about" onClick={closeMobileMenu} className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2">About</Link>
+              <Link to="/tools" onClick={closeMobileMenu} className="block text-gray-700 hover:text-red-600 font-medium transition-colors py-2">All Tools</Link>
 
               <div className="border-t border-gray-200 pt-3">
                 <p className="text-sm font-semibold text-gray-600 mb-2">Popular Tools</p>
@@ -136,25 +90,23 @@ const Navbar = memo(() => {
         {/* Review Modal */}
         {showReviewModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
+            <form
+              className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl"
+              onSubmit={handleReviewSubmit}
+            >
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Send Feedback</h3>
-                <button
-                  onClick={() => setShowReviewModal(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
-                >
-                  ×
-                </button>
+                <button type="button" onClick={() => setShowReviewModal(false)} className="text-gray-500 hover:text-gray-700 text-2xl">×</button>
               </div>
               <p className="text-gray-600 mb-4 text-sm md:text-base">What feature would you like us to add, remove, or improve?</p>
-              
+
               <textarea
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
                 placeholder="Share your feedback or feature request..."
                 className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none h-28 text-sm"
               />
-              
+
               <input
                 type="email"
                 value={reviewEmail}
@@ -162,22 +114,12 @@ const Navbar = memo(() => {
                 placeholder="Your email (optional)"
                 className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"
               />
-              
+
               <div className="flex gap-3">
-                <button
-                  onClick={handleReviewSubmit}
-                  className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base"
-                >
-                  Submit
-                </button>
-                <button
-                  onClick={() => setShowReviewModal(false)}
-                  className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base"
-                >
-                  Cancel
-                </button>
+                <button type="submit" className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base">Submit</button>
+                <button type="button" onClick={() => setShowReviewModal(false)} className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base">Cancel</button>
               </div>
-            </div>
+            </form>
           </div>
         )}
       </div>
