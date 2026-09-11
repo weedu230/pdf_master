@@ -12,9 +12,16 @@ const Navbar = memo(() => {
     e?.preventDefault?.();
 
     if (reviewText.trim()) {
+      const feedbackEmail = 'mwaleedahmed256@gmail.com';
       const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
       const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
-      window.location.href = `mailto:mwaleedahmed256@gmail.com?subject=${subject}&body=${body}`;
+      const feedbackUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(feedbackEmail)}&su=${subject}&body=${body}`;
+
+      const feedbackTab = window.open(feedbackUrl, '_blank', 'noopener,noreferrer');
+      if (!feedbackTab) {
+        window.location.assign(feedbackUrl);
+      }
+
       setReviewText('');
       setReviewEmail('');
       setShowReviewModal(false);
