@@ -7,41 +7,49 @@ const Navbar = memo(() => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewText, setReviewText] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
+  const [showSubmissionToast, setShowSubmissionToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleReviewSubmit = async (e) => {
-  e?.preventDefault?.();
+    e?.preventDefault?.();
+    if (!reviewText.trim() || isSubmitting) return;
 
-  if (!reviewText.trim()) return;
+    setIsSubmitting(true);
 
-  const payload = {
-    name: undefined, // or include a name field if you add one to the form
-    email: reviewEmail || undefined,
-    message: reviewText
+    const payload = {
+      name: undefined,
+      email: reviewEmail || undefined,
+      message: reviewText
+    };
+
+    const apiBase = import.meta.env.VITE_API_URL ?? '';
+
+    try {
+      const res = await fetch(`${apiBase}/api/feedback`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        setReviewText('');
+        setReviewEmail('');
+        setShowReviewModal(false);
+        setShowSubmissionToast(true);
+        setTimeout(() => setShowSubmissionToast(false), 3000);
+      } else {
+        const err = await res.json().catch(() => null);
+        const msg = err?.detail || 'Failed to send feedback';
+        alert(msg);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to send feedback. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  try {
-    const res = await fetch('/api/feedback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (res.ok) {
-      setReviewText('');
-      setReviewEmail('');
-      setShowReviewModal(false);
-      setShowSubmissionToast(true);
-      setTimeout(() => setShowSubmissionToast(false), 3000);
-    } else {
-      const err = await res.json().catch(() => null);
-      const msg = err?.detail || 'Failed to send feedback';
-      alert(msg);
-    }
-  } catch (err) {
-    alert('Failed to send feedback. Please try again later.');
-    console.error(err);
-  }
-};
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
@@ -62,7 +70,7 @@ const Navbar = memo(() => {
           <Link to="/" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Home</Link>
           <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">About</Link>
           <Link to="/tools" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Tools</Link>
-          <button onClick={() => setShowReviewModal(true)} className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm">Review</button>
+          <button onClick={() => setShowReviewModal(true)} className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm md:text-base">Send Feedback</button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -137,10 +145,17 @@ const Navbar = memo(() => {
               />
 
               <div className="flex gap-3">
-                <button type="submit" className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base">Submit</button>
+                <button type="submit" disabled={isSubmitting} className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base">{isSubmitting ? 'Sending...' : 'Submit'}</button>
                 <button type="button" onClick={() => setShowReviewModal(false)} className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base">Cancel</button>
               </div>
             </form>
+          </div>
+        )}
+
+        {/* Submission Toast / Confirmation popup */}
+        {showSubmissionToast && (
+          <div className="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-3">
+            <span>Feedback submitted — thank you!</span>
           </div>
         )}
       </div>
