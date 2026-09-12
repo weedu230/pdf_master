@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import pdf_tools
+from app.routers import pdf_tools, feedback
 
 app = FastAPI(
     title="PDF Master API",
@@ -19,6 +19,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(pdf_tools.router)
+app.include_router(feedback.router)
 
 @app.get("/")
 async def root():
@@ -31,7 +32,8 @@ async def root():
             "pdf_to_jpg": "POST /api/pdf-to-jpg",
             "jpg_to_pdf": "POST /api/jpg-to-pdf",
             "protect": "POST /api/protect",
-            "unlock": "POST /api/unlock"
+            "unlock": "POST /api/unlock",
+            "feedback": "POST /api/feedback"
         }
     }
 
