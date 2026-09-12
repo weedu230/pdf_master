@@ -7,17 +7,30 @@ const Navbar = memo(() => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewText, setReviewText] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
+  const [feedbackUrl, setFeedbackUrl] = useState(null);
+  const [showSubmissionToast, setShowSubmissionToast] = useState(false);
 
   const handleReviewSubmit = (e) => {
     e?.preventDefault?.();
 
     if (reviewText.trim()) {
+      const feedbackEmail = 'mwaleedahmed256@gmail.com';
       const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
       const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
-      window.location.href = `mailto:mwaleedahmed256@gmail.com?subject=${subject}&body=${body}`;
+
+      // Build a deterministic Gmail compose URL and store it, but don't open it automatically.
+      // User requested a confirmation popup and to NOT be sent directly to the email tab.
+      const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(feedbackEmail)}&su=${subject}&body=${body}`;
+      setFeedbackUrl(url);
+
+      // Clear and close the modal and show a short confirmation toast in-app.
       setReviewText('');
       setReviewEmail('');
       setShowReviewModal(false);
+      setShowSubmissionToast(true);
+
+      // Hide the toast after a short delay
+      setTimeout(() => setShowSubmissionToast(false), 3000);
     }
   };
 
@@ -41,7 +54,7 @@ const Navbar = memo(() => {
           <Link to="/" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Home</Link>
           <Link to="/about" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">About</Link>
           <Link to="/tools" className="text-gray-700 hover:text-red-600 font-medium transition-colors duration-300">Tools</Link>
-          <button onClick={() => setShowReviewModal(true)} className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm">Review</button>
+          <button onClick={() => setShowReviewModal(true)} className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition duration-300 text-sm md:text-base">Send Feedback</button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -120,6 +133,25 @@ const Navbar = memo(() => {
                 <button type="button" onClick={() => setShowReviewModal(false)} className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base">Cancel</button>
               </div>
             </form>
+          </div>
+        )}
+
+        {/* Submission Toast / Confirmation popup */}
+        {showSubmissionToast && (
+          <div className="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-3">
+            <span>Feedback submitted — thank you!</span>
+            {feedbackUrl && (
+              <button
+                onClick={() => {
+                  const tab = window.open(feedbackUrl, '_blank', 'noopener,noreferrer');
+                  // If popup blocked, fall back to same-tab navigation
+                  if (!tab) window.location.assign(feedbackUrl);
+                }}
+                className="underline text-sm"
+              >
+                Open email
+              </button>
+            )}
           </div>
         )}
       </div>
