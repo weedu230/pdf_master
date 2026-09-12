@@ -7,30 +7,46 @@ const Navbar = memo(() => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewText, setReviewText] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
-  const [feedbackUrl, setFeedbackUrl] = useState(null);
   const [showSubmissionToast, setShowSubmissionToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e?.preventDefault?.();
+    if (!reviewText.trim() || isSubmitting) return;
 
-    if (reviewText.trim()) {
-      const feedbackEmail = 'mwaleedahmed256@gmail.com';
-      const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
-      const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
+    setIsSubmitting(true);
 
-      // Build a deterministic Gmail compose URL and store it, but don't open it automatically.
-      // User requested a confirmation popup and to NOT be sent directly to the email tab.
-      const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(feedbackEmail)}&su=${subject}&body=${body}`;
-      setFeedbackUrl(url);
+    const payload = {
+      name: undefined,
+      email: reviewEmail || undefined,
+      message: reviewText
+    };
 
-      // Clear and close the modal and show a short confirmation toast in-app.
-      setReviewText('');
-      setReviewEmail('');
-      setShowReviewModal(false);
-      setShowSubmissionToast(true);
+    const apiBase = import.meta.env.VITE_API_URL ?? '';
 
-      // Hide the toast after a short delay
-      setTimeout(() => setShowSubmissionToast(false), 3000);
+    try {
+      const res = await fetch(`${apiBase}/api/feedback`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        setReviewText('');
+        setReviewEmail('');
+        setShowReviewModal(false);
+        setShowSubmissionToast(true);
+        setTimeout(() => setShowSubmissionToast(false), 3000);
+      } else {
+        const err = await res.json().catch(() => null);
+        const msg = err?.detail || 'Failed to send feedback';
+        alert(msg);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to send feedback. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -129,7 +145,7 @@ const Navbar = memo(() => {
               />
 
               <div className="flex gap-3">
-                <button type="submit" className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base">Submit</button>
+                <button type="submit" disabled={isSubmitting} className="flex-1 bg-red-500 text-white py-2 md:py-3 rounded-lg font-medium hover:bg-red-600 transition text-sm md:text-base">{isSubmitting ? 'Sending...' : 'Submit'}</button>
                 <button type="button" onClick={() => setShowReviewModal(false)} className="flex-1 bg-gray-200 text-gray-800 py-2 md:py-3 rounded-lg font-medium hover:bg-gray-300 transition text-sm md:text-base">Cancel</button>
               </div>
             </form>
@@ -140,18 +156,6 @@ const Navbar = memo(() => {
         {showSubmissionToast && (
           <div className="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-3">
             <span>Feedback submitted — thank you!</span>
-            {feedbackUrl && (
-              <button
-                onClick={() => {
-                  const tab = window.open(feedbackUrl, '_blank', 'noopener,noreferrer');
-                  // If popup blocked, fall back to same-tab navigation
-                  if (!tab) window.location.assign(feedbackUrl);
-                }}
-                className="underline text-sm"
-              >
-                Open email
-              </button>
-            )}
           </div>
         )}
       </div>
