@@ -8,26 +8,40 @@ const Navbar = memo(() => {
   const [reviewText, setReviewText] = useState('');
   const [reviewEmail, setReviewEmail] = useState('');
 
-  const handleReviewSubmit = (e) => {
-    e?.preventDefault?.();
+  const handleReviewSubmit = async (e) => {
+  e?.preventDefault?.();
 
-    if (reviewText.trim()) {
-      const feedbackEmail = 'mwaleedahmed256@gmail.com';
-      const subject = encodeURIComponent('PDF Master - Feature Request/Feedback');
-      const body = encodeURIComponent(`Feature/Feedback:\n${reviewText}\n\nEmail: ${reviewEmail || 'Anonymous'}`);
-      const feedbackUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(feedbackEmail)}&su=${subject}&body=${body}`;
+  if (!reviewText.trim()) return;
 
-      const feedbackTab = window.open(feedbackUrl, '_blank', 'noopener,noreferrer');
-      if (!feedbackTab) {
-        window.location.assign(feedbackUrl);
-      }
+  const payload = {
+    name: undefined, // or include a name field if you add one to the form
+    email: reviewEmail || undefined,
+    message: reviewText
+  };
 
+  try {
+    const res = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
       setReviewText('');
       setReviewEmail('');
       setShowReviewModal(false);
+      setShowSubmissionToast(true);
+      setTimeout(() => setShowSubmissionToast(false), 3000);
+    } else {
+      const err = await res.json().catch(() => null);
+      const msg = err?.detail || 'Failed to send feedback';
+      alert(msg);
     }
-  };
-
+  } catch (err) {
+    alert('Failed to send feedback. Please try again later.');
+    console.error(err);
+  }
+};
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
