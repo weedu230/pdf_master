@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import pdf_tools
+from app.routers import pdf_tools, feedback
 
 app = FastAPI(
     title="PDF Master API",
@@ -19,6 +20,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(pdf_tools.router)
+app.include_router(feedback.router)
 
 @app.get("/")
 async def root():
