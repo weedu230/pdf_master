@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
 import os
@@ -5,6 +6,7 @@ import smtplib
 from email.message import EmailMessage
 
 router = APIRouter(prefix="/api", tags=["feedback"])
+logger = logging.getLogger("uvicorn.error")
 
 
 class FeedbackPayload(BaseModel):
@@ -42,7 +44,6 @@ async def send_feedback(payload: FeedbackPayload):
 
     # Send via SMTP
     try:
-        # Use STARTTLS on port 587, common for transactional SMTP
         server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
         server.ehlo()
         if SMTP_PORT == 587:
@@ -51,7 +52,8 @@ async def send_feedback(payload: FeedbackPayload):
         server.login(SMTP_USER, SMTP_PASSWORD)
         server.send_message(msg)
         server.quit()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to send email: {e}")
+    except Exception:
+        logger.exception("Failed to send feedback email")
+        raise HTTPException(status_code=500, detail="Failed to send feedback")
 
     return {"status": "ok", "message": "Feedback sent"}

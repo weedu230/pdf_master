@@ -7,4 +7,4 @@ http://www.pdf-master-weedu.netlify.app/* https://pdf-master-weedu.netlify.app/:
 https://www.pdf-master-weedu.netlify.app/* https://pdf-master-weedu.netlify.app/:splat 301!
 
 # Health check endpoint for backend
-/health 200
+/health /health.html 200
